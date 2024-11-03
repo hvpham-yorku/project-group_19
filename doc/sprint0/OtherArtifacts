@@ -1,0 +1,99 @@
+1) team-contract.pdf
+- Not graded
+
+2) personas.pdf
+2-3 personas
+● Personas are detailed descriptions of the key users you mentioned in your summary.md
+● The personas must be prepared in PDF format. Each persona must be written on an
+individual page.
+● The format should follow: http://www.agilemodeling.com/artifacts/personas.htm
+
+---
+## Personas.pdf (max 8 marks)
+
+  - Quality of the persona should be measured based on the presence/absence quality of description of the following elements:
+      Age, personality, personal background
+      Skills, professional background
+      Attitude towards technology, domain, etc.
+      Goals when using the system
+      (max 4 marks)
+    - 4 marks = Two or more high quality personas provided
+    - 3 marks = Two personas provided but quality is not very good
+    - 2 marks = Only 1 persona provided with good quality
+    - 1 mark  = One persona of poor quality
+    - 0 marks = No personas provided
+
+	  Your mark: _
+
+  - Relevance to the system  (max 2 marks)
+    - 2 marks = Personas are highly relevant to the system 
+    - 1 mark  = Personas are somewhat relevant
+    - 0 marks = Not all or no personas are relevant 
+
+    Your mark: _
+
+  - Persona Descriptions (max 2 marks)
+    - 2 marks = Appropriate length and is well-written
+    - 1 mark  = Short and/or with errors
+    - 0 marks = No writing or poor quality
+
+    Your mark: _
+	
+  Personas.pdf Total Mark: _ / 8
+
+3) Setup
+● You should create the initial foundation for your project, so that when Sprint 1 begins
+you can immediately start developing features.
+● Work should be completed to show connectivity between your model, view, and
+controller
+● Example: clicking a button or form that creates an object in a database
+
+---
+## Setup (max 3 marks)
+
+  - Frontend
+    - 1 mark  = Frontend setup is complete
+    - 0 marks = Frontend is not setup
+
+  - Backend
+    - 1 mark  = Backend setup is complete
+    - 0 marks = Backend is not setup
+
+    Your mark: _
+
+  - Database
+    - 1 mark  = Database setup is complete
+    - 0 marks = Database is not setup
+
+    Your mark: _  
+   
+  Setup Total Mark: _ / 3
+
+4) User Experience/UI
+● An artifact that gives a visual indication of how you imagine the user interface of your
+system will implement the key scenarios listed in your short form creative brief.
+● Focus on the logical flow of the application and the user’s experience while going
+through the key scenario(s), don’t worry about ”making things pretty” or getting the
+widgets exactly right.
+● Use mockups, storyboards, wireframes, fake command-line sessions, etc.
+● Feel free to use any tools that are best fit for your designs. As long as it is easy for the
+TAs to evaluate and understand your software/product.
+○ Storyboarding: http://www.storyboardthat.com/
+○ Interface designs: https://www.figma.com/ 
+---
+## User experience: (max 4 marks)
+  - User experience is logically related to scenarios (from summary.md) (max 2 marks)
+    - 2 marks = Relates well
+    - 1 mark  = Somewhat related
+    - 0 marks = Missing or not related
+
+    Your mark: _
+
+  - Graphic representation is clear and represents well indended user interface elements (max 2 marks)
+    - 2 marks = Clear and well done
+    - 1 mark  = Not very clear, 
+    - 0 marks = missing or completely unclear
+  
+    Your mark: _ 
+   
+  User experience Total Mark: _ / 4
