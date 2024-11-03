@@ -2,14 +2,15 @@
 
 from flask import Flask
 from app.config import Config
+from app.routes.test_connection import test_bp
 
 def create_app():
     app = Flask(__name__)
 
-    # Apply the Config settings
+    # Apply configuration settings from Config
     app.config.from_object(Config)
 
-    # Initialize other app components (e.g., database, blueprints)
-    # ...
+    # Register blueprints
+    app.register_blueprint(test_bp, url_prefix="/api")
 
     return app
