@@ -1,3 +1,5 @@
+/* src/styles/HomePage.module.css */
+
 .container {
     text-align: center;
     margin-top: 50px;
@@ -17,6 +19,7 @@
     color: white;
     border: none;
     border-radius: 5px;
+    margin: 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -28,4 +31,22 @@
     margin-top: 20px;
     font-size: 1.2rem;
     color: #333;
+}
+
+.table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
 }

@@ -13,4 +13,4 @@ def test_db_connection():
 
     # If the connection is successful
     close_connection(connection)
-    return jsonify({"message": "Database connection successful!"})
+    return jsonify({"message": "Hello from flask👋! Database connection successful!"})

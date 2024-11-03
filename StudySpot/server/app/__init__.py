@@ -4,6 +4,8 @@ from flask import Flask
 from flask_cors import CORS  # Import Flask-Cors
 from app.config import Config
 from app.routes.test_connection import test_bp
+from app.routes.study_spots import study_spots_bp
+
 
 def create_app():
     app = Flask(__name__)
@@ -15,5 +17,6 @@ def create_app():
 
     # Register blueprints
     app.register_blueprint(test_bp, url_prefix="/api")
+    app.register_blueprint(study_spots_bp, url_prefix="/api")
 
     return app
