@@ -16,3 +16,25 @@ procedure for how to build and run your project.
 ○ https://www.makeareadme.com/
 ○ https://blog.bitsrc.io/how-to-write-beautiful-and-meaningful-readme-md-foryour-next-project-897045e3f991
 ○ Look at open source Github repositories and study their process!
+
+---
+## Documentation: README.md (max 3 marks)
+  - Motivation and Project Description
+    - 1 mark  = Short detailed description of motivation behind the project and why it exists
+    - 0 marks = Motivation is missing or has grammar errors/typos
+
+    Your mark: _
+
+  - Installation for your Software/System
+    - 1 mark  = Instructions for installation process are clear and concise, with provided commands.
+    - 0 marks = No instructions or installation section has grammar errors/typos
+
+    Your mark: _
+
+  - Contribution
+    - 1 mark  = Contribution process is well-explained, allowing contributors to easily get on board
+    - 0 marks = Contribution is missing or has grammar errors/typos
+
+    Your mark: _  
+   
+  README.md Total Mark: _ / 3

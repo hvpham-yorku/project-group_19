@@ -39,3 +39,20 @@ https://articles.uie.com/short_form_creative_brief/
     Your mark: _
     
   summary.md Total Mark: _ / 8
+
+  - Project objectives
+    - To make it easier for student to find places to study
+    - Utilize empty lecture halls and classrooms
+    - Add ratings for locations - noise level, facilities, etc
+  - Key users
+    - Students
+  - Key Use case
+    - Locate study spaces based on requirements (dinstance between current location and spaces, type of space (lecture hall, cafes, libraries))
+    - Real time availability updates of lecture halls
+    - Ratings for different areas of study areas
+  - Scenarios
+    - Students with free hours between classes looking for areas to study/relax
+    - New students navigating campus
+    - Late night studiers
+  - Principles
+    - The design should provide a great user experience for students. make it easy for them to find spots, and reduce as many barriers by providing the information theyd need.
