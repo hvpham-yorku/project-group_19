@@ -1,18 +1,18 @@
 # studyspot/database.py
 
-import os
 import mysql.connector
 from mysql.connector import Error
+from app.config import Config  # Import Config for environment variables
 
 def create_connection():
-    """Establishes and returns a MySQL database connection."""
+    """Establishes and returns a MySQL database connection using Config."""
     try:
         connection = mysql.connector.connect(
-            host=os.getenv("DB_HOST", "localhost"),
-            user=os.getenv("DB_USER", "your_username"),
-            password=os.getenv("DB_PASSWORD", "your_password"),
-            database=os.getenv("DB_NAME", "your_database"),
-            port=os.getenv("DB_PORT", "3306")
+            host=Config.DB_HOST,
+            user=Config.DB_USER,
+            password=Config.DB_PASSWORD,
+            database=Config.DB_NAME,
+            port=Config.DB_PORT
         )
         if connection.is_connected():
             print("Connected to the MySQL database")
