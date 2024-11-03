@@ -1,0 +1,62 @@
+# Ignore Python-related files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Virtual environment
+venv/
+env/
+
+# Flask configuration
+instance/
+config.py  # Ignore if you store sensitive data here
+*.log
+*.sqlite
+
+# Environment variables file
+.env
+.env.*
+
+# Database files
+*.db
+*.sqlite3
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore Node.js dependencies
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Build directories
+dist/
+build/
+*.log
+
+# Ignore Docker files (if applicable)
+docker-compose.override.yml
+*.pid
+
+# Ignore IDE settings
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Ignore generated HTML coverage files
+htmlcov/
+
+# Ignore pytest cache
+.pytest_cache/
