@@ -49,13 +49,13 @@ Key Persona: Alex, a third-year undergraduate student juggling a busy academic s
 This app is designed with students like Alex in mind, who are looking for spaces that suit their study needs while maximizing their limited time. By integrating features that allow users to filter by location, type of space, and crowd level, the app helps Alex quickly find nearby options, saving him from wandering the campus looking for an open seat. In addition, Alex appreciates having insight into factors such as noise level and accessibility of amenities (like power outlets), as these details make the difference in choosing the right place for focused study or a relaxing break.
 
 ## Part 3: The Key Scenarios
-# Key Scenario 1: Gap Between Classes  
+### Key Scenario 1: Gap Between Classes  
 Alex has a two-hour gap between his morning and afternoon lectures and needs a quiet place to work on an upcoming assignment. He opens the app and selects filters for proximity, noise level, and seating availability. The app shows him that the nearby Arts Lecture Hall is available and has a low noise level. Alex is able to find a seat, set up his laptop, and work productively for an hour before his next class. The app’s real-time availability feature allows him to make a quick, informed decision, maximizing his time for studying and reducing unnecessary walking around campus.
 
-# Key Scenario 2: Navigating the Campus as a New Student
+### Key Scenario 2: Navigating the Campus as a New Student
 Emily, a first-year student unfamiliar with the campus layout, often struggles to find quiet study spots. She opens the app and views a map of the campus, which shows available study spaces with color-coded icons. Emily sees an open study area in the Biology building, which she didn’t know had available study spots. She selects this option, and the app provides step-by-step directions to guide her to the spot. Thanks to this feature, Emily is able to find a quiet place to study without feeling lost or overwhelmed, making her transition to campus life smoother and more comfortable.
 
-# Key Scenario 3: Late-Night Study Session
+### Key Scenario 3: Late-Night Study Session
 A group of students working on a group project decides to pull a late-night study session to finalize their presentation. They need a secure area that’s open late, with facilities like power outlets and sufficient seating for collaboration. The app shows them which study spots are open 24 hours, allowing them to select a study room in the Science Teaching Complex that’s safe for night access and equipped with everything they need. By helping the group locate a secure and convenient study area, the app enables them to stay productive even during late hours and reduces the safety concerns associated with studying on campus at night.
 
 ## Part 4: The Key Principles
