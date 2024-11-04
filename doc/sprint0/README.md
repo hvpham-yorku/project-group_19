@@ -58,14 +58,14 @@ git clone <repository-url>
 cd studyspot
 ```
 ### 2. Backend Setup (Flask + MySQL)
-# a. Set up a Virtual Environment
+#### a. Set up a Virtual Environment
 Navigate to the `Server` directory and set up a Python virtual environment:
 ```bash
 cd backend
 python3 -m venv venv
 source venv/bin/activate  # On Windows, use venv\Scripts\activate
 ```
-# b. Install Python Dependencies
+#### b. Install Python Dependencies
 1- Install the necessary dependencies using `requirements.txt`:
 ```bash
 pip install -r requirements.txt
@@ -81,7 +81,7 @@ DB_NAME=studyspot_db
 DB_PORT=3306
 SECRET_KEY=your_secret_key
 ```
-# c. Start the Flask Server
+#### c. Start the Flask Server
 In the backend directory, start the Flask server:
 ```bash
 python wsgi.py
@@ -89,19 +89,19 @@ python wsgi.py
 The backend should now be running at `http://localhost:5000`.
 
 ### 3. Frontend Setup (Next.js)
-# a. Install Node Dependencies
+#### a. Install Node Dependencies
 Navigate to the `client` directory and install the necessary `Node.js` dependencies:
 ```bash
 cd ../frontend
 npm install
 ```
-# b. Configure Environment Variables for the Frontend
+#### b. Configure Environment Variables for the Frontend
 Create a `.env.local` file in the `client` directory and specify the backend URL:
 ```bash
 NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
 
 ```
-# c. Start the Next.js Development Server
+#### c. Start the Next.js Development Server
 In the frontend directory, start the `Next.js` development server:
 ```bash
 npm run dev
@@ -113,7 +113,7 @@ The frontend should now be running at `http://localhost:3000`.
 `GET /api/test-db-connection`: Tests the connection to the database. Returns a success or failure message.
 `GET /api/study-spots`: Retrieves all available study spots with details about the room, lecture hall, start time, and end time.
 
-### Project Directory Structure
+### Project Directory Structure (so far)
 ```bash
 studyspot/
 ├── backend/
