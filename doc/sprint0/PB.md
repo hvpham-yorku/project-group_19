@@ -82,7 +82,7 @@ criteria of satisfaction. For this stage, there is no need to estimate user stor
     - User Story: As a York University sudent, I want to view a map of the campus so that I can easily see where different buildings and facilities are located.
 
 15) Label Map with Colour-Coded Pins for Status of Spots/Buildings
-   - User Story: As a York University sudent, I want the map to display color-coded pins for building statuses (available, closed, opening soon) so to help me visualize my options.
+     - User Story: As a York University sudent, I want the map to display color-coded pins for building statuses (available, closed, opening soon) so to help me visualize my options.
 
 16) Press Map Pins to Show More Details About Rooms
     - User Story: As a York University sudent, I want to be able to tap on pins to see detailed information about room availability in each building so that I can plan where to go.
