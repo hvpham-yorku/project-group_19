@@ -144,7 +144,9 @@ studyspot/
 
 ## Design
 Figma 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/2LGiDpKGa8Q7haHxG6NA87/StudySpot?node-id=4-152&node-type=canvas&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
+![image](https://github.com/user-attachments/assets/dfebcf04-49e0-4ec8-8159-420397599e1d)
+(https://path-to-your-screenshot-image.png)](https://www.figma.com/proto/2LGiDpKGa8Q7haHxG6NA87/StudySpot?node-id=4-152&node-type=canvas&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share)
+
 
 
 
