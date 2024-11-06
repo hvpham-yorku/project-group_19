@@ -39,6 +39,8 @@ procedure for how to build and run your project.
    
   README.md Total Mark: _ / 3
 
+## Motivation
+York University is Canada’s third-largest university, and finding a place to study can often be challenging and overwhelming for students due to limited public information and the sheer variety of options available. "StudySpots" seeks to address this issue by gathering and organizing data on lecture halls, classrooms, libraries, and cafes, then presenting these options in a user-friendly way based on the student’s current location and preferred filters.
 
 ## Prerequisites
 
@@ -141,6 +143,11 @@ studyspot/
 │   └── next.config.js             # Next.js configuration file
 └── README.md                      # Project documentation
 ```
+## Contribution
+Our project follows a structured and collaborative workflow to ensure efficient and organized contributions.
+- Branch Naming: We name our branches based on the purpose of each change. Feature branches are named as feature/[feature-name], bug fixes as bugfix/[bug-description], and release branches as release/[version-number] to maintain clarity and consistency across the team.
+- Pull Requests: We use pull requests (PRs) to merge changes into the main or develop branches. Each PR is reviewed by team members for code quality, adherence to project standards, and functionality. This review process ensures that only thoroughly tested and approved code is merged, contributing to the stability of the project.
+- GitHub issues/ticketing website: We will not be using these tools for this projects, since we are only 3 members and we can easily make decisions and assign tasks without using a ticketing website.
 
 ## Design
 Figma 

@@ -101,3 +101,5 @@ criteria of satisfaction. For this stage, there is no need to estimate user stor
 
 21) See Other People’s Ratings/Reviews for Different Spots
     - User Story: As a York University sudent, I want to view other people’s ratings and reviews for different spots so that I can make informed decisions.
+
+**NOTE: For sprint 1 and sprint 2, we aim to implement user stories 1 - 17. Implementing user stories 18 - 21 is infeasible given the time frame.
