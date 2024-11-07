@@ -42,64 +42,61 @@ criteria of satisfaction. For this stage, there is no need to estimate user stor
 1) Get User Location
     - User Story: As a York University sudent, I want the app to detect my current location so that I can easily find nearby spots to study.
 
-2) Filter for Lecture Halls/Classrooms
-    - User Story: As a York University sudent, I want to filter the search results to only show lecture halls and classrooms because I prefer to study in lecture halls.
-
-3) Show Available Lecture Halls/Classrooms
+2) Show Available Lecture Halls/Classrooms, Libraries and Cafes
     - User Story: As a York University sudent, I want to see which lecture halls or classrooms are currently available so that I know where I can go depending on the available options.
 
-4) Show Lecture Halls/Classrooms Opening Soon
+3) Show Lecture Halls/Classrooms, Libraries and Cafes Opening Soon
     - User Story: As a York University sudent, I want to see which lecture halls or classrooms will open soon so that I can wait if I’m nearby and it’s convenient.
 
-5) Show Busy/Closed Lecture Halls/Classrooms
+4) Show Busy/Closed Lecture Halls/Classrooms, Libraries and Cafes
     - User Story: As a York University sudent, I want to see which lecture halls or classrooms are currently busy or closed so that I don’t waste time trying to access them.
 
-6) Filter for Libraries
-    - User Story: As a York University sudent, I want to filter the results to only show libraries because I prefer studying in libraries.
+5) Filter for Lecture Halls/Classrooms, Libraries or Cafes
+    - User Story: As a York University sudent, I want to filter the search results to only show lecture halls/classrooms, libraries or cafes because I prefer some of those options.
 
-7) Show Available Libraries
-    - User Story: As a York University sudent, I want to see which libraries are available so that I can go to one that’s currently open.
-
-8) Show Libraries that are Opening Soon
-    - User Story: As a York University sudent, I want to know which libraries are opening soon so that I can decide whether to wait or look for another option.
-
-9) Show Closed Libraries
-    - User Story: As a York University sudent, I want to know which libraries are closed so that I don’t go there and waste my time.
-
-10) Filter for Cafes
-    - User Story: As a York University sudent, I want to filter the results to only show cafes because I prefer studying in cafes.
-
-11) Show Available Cafes
-    - User Story: As a York University sudent, I want to see which cafes are currently open so that I can decide where to go depending on the available options.
-
-12) Show Cafes that are Opening Soon
-    - User Story: As a York University sudent, I want to see which cafes will open soon so that I can wait nearby if needed.
-
-13) Show Closed Cafes
-    - User Story: As a York University sudent, I want to see which cafes are closed so that I can avoid going there at the wrong time.
-
-14) Show Map of Areas
+6) Show Map of Areas
     - User Story: As a York University sudent, I want to view a map of the campus so that I can easily see where different buildings and facilities are located.
 
-15) Label Map with Colour-Coded Pins for Status of Spots/Buildings
+7) Label Map with Colour-Coded Pins for Status of Spots/Buildings
      - User Story: As a York University sudent, I want the map to display color-coded pins for building statuses (available, closed, opening soon) so to help me visualize my options.
 
-16) Press Map Pins to Show More Details About Rooms
+8) Press Map Pins to Show More Details About Rooms
     - User Story: As a York University sudent, I want to be able to tap on pins to see detailed information about room availability in each building so that I can plan where to go.
 
-17) Move Interactive Map Around to Explore Different Areas
+9) Move Interactive Map Around to Explore Different Areas
     - User Story: As a York University sudent, I want to move the map around so that I can explore different areas on campus.
 
-18) Expand Building to See Availability of Specific Rooms in the Building
+10) Expand Building to See Availability of Specific Rooms in the Building
     - User Story: As a York University sudent, I want to expand a building on the map to see which specific rooms are available, so I can decide which room to go to.
 
-19) See Directions to Relevant Building Starting from Given Location
+11) See Directions to Relevant Building Starting from Given Location
     - User Story: As a York University sudent, I want to get directions from my current location to a selected building so that I can find my way there easily.
 
-20) Rate/Review Different Spots
-    - User Story: As a York University sudent, I want to rate and review different spots on campus so that I can share my experience with others.
+12) Add a Rating for Different Spots
+    - User Story: As a York University sudent, I want to rate from 0 to 5 stars for different spots on campus so that I can share my experience with others.
 
-21) See Other People’s Ratings/Reviews for Different Spots
-    - User Story: As a York University sudent, I want to view other people’s ratings and reviews for different spots so that I can make informed decisions.
+13) See Other People’s Ratings for Different Spots
+    - User Story: As a York University sudent, I want to view other people’s ratings for different spots so that I can make informed decisions.
 
-**NOTE: For sprint 1 and sprint 2, we aim to implement user stories 1 - 17. Implementing user stories 18 - 21 is infeasible given the time frame.
+14) See The Average Ratings for Different Spots
+    - User Story: As a York University student, I want to see the average rating for different spots on campus so that I can quickly assess the general opinion.
+
+15) Add a Written review for Different Spots
+    - User Story: As a York University student, I want to add a written review for different spots on campus so that I can share more detailed feedback about my experience.
+
+16) See Other People’s Written Reviews for Different Spots
+    - User Story: As a York University student, I want to read other people’s written reviews for different spots so that I can get detailed insights and make better decisions.
+
+17) Showcase An Overall Summary Of All The Reviews for Different Spots
+    - User Story: As a York University student, I want to see an overall summary (generated by AI) of all reviews for a particular spot so that I can quickly understand the general sentiment and popularity.
+
+18) Filter Spots by Rating
+    - User Story: As a York University student, I want to filter spots by rating (e.g., only show spots with 4 stars and above) so that I can quickly find highly rated locations.
+
+19) Search for Specific Spots on Campus
+    - User Story: As a York University student, I want to search for specific spots on campus so that I can quickly locate and view information about them.
+
+20) Mark a Spot as Favorite
+    - User Story: As a York University student, I want to mark certain spots as favorites so that I can quickly access the places I like most on campus.
+
+**NOTE: For sprint 1 and sprint 2, we aim to implement user stories 1 - 9. Implementing user stories 9 - 20 is infeasible given the time frame.
