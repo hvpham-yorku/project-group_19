@@ -149,9 +149,6 @@ Our project follows a structured and collaborative workflow to ensure efficient 
 - Pull Requests: We use pull requests (PRs) to merge changes into the main or develop branches. Each PR is reviewed by team members for code quality, adherence to project standards, and functionality. This review process ensures that only thoroughly tested and approved code is merged, contributing to the stability of the project.
 - GitHub issues/ticketing website: We will not be using these tools for this projects, since we are only 3 members and we can easily make decisions and assign tasks without using a ticketing website.
 
-## Design
-Figma 
-[View the StudySpot Prototype on Figma](https://www.figma.com/proto/2LGiDpKGa8Q7haHxG6NA87/StudySpot?node-id=4-152&node-type=canvas&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share)
 
 
 
