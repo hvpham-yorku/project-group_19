@@ -1,27 +1,6 @@
 ## Group name: 
 StudySpot
 
-## Documentation: README.md (max 3 marks)
-  - Motivation and Project Description
-    - 1 mark  = Short detailed description of motivation behind the project and why it exists
-    - 0 marks = Motivation is missing or has grammar errors/typos
-
-    Your mark: _
-
-  - Installation for your Software/System
-    - 1 mark  = Instructions for installation process are clear and concise, with provided commands.
-    - 0 marks = No instructions or installation section has grammar errors/typos
-
-    Your mark: _
-
-  - Contribution
-    - 1 mark  = Contribution process is well-explained, allowing contributors to easily get on board
-    - 0 marks = Contribution is missing or has grammar errors/typos
-
-    Your mark: _  
-   
-  README.md Total Mark: _ / 3
-
 ## Motivation
 York University is Canada’s third-largest university, and finding a place to study can often be challenging and overwhelming for students due to limited public information and the sheer variety of options available. "StudySpots" seeks to address this issue by gathering and organizing data on lecture halls, classrooms, libraries, and cafes, then presenting these options in a user-friendly way based on the student’s current location and preferred filters.
 
