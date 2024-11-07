@@ -1,82 +1,41 @@
-● Identify the most important user stories.
-● You should have around 20. Enough to give us (and you) a good sense of the scope of
-the project. If you have less than 20 but feel like the size of your user stories justifies it,
-please reach out to a TA to confirm.
-● As a guideline: a user story (usually) corresponds to a feature in your project.
-● Each user story must obey the format stated in the lecture and it must also contain the
-criteria of satisfaction. For this stage, there is no need to estimate user stories.
-● Additionally, all stories in PB.md need to be recorded on Trello.
-
----
-## Product Backlog PB.md (Max 8 marks) 
-  - Sufficient stories created to occupy team for release 1 (max 2 marks) 
-    - 2 marks = Excellent
-    - 1 mark  = Few user stories, clearly not enough to occupy team for release 1
-    - 0 marks = No user stories
-   
-    Your mark: _
-
-  - Relevant persona clearly identified for each user story (max 2 marks) 
-    - 2 marks = All user stories identify relevant persona
-    - 1 mark  = Part of the stories do not mention persona
-    - 0 marks = No personas mentioned in user stories
-
-    Your mark: _
-
-  - All user stories identify goal/desire and all identify why/benefit (max 2 marks) 
-    - 2 marks = All user stories identify goals
-    - 1 mark  = Part of the stories do not identify goals
-    - 0 marks = No user story identifies goals
-   
-    Your mark: _
-
-  - Writing (max 2 marks) 
-    - 2 marks = Writing is very clear for all stories
-    - 1 mark  = Writing is not clear for some stories
-    - 0 marks = Writing is poor and with errors
-
-    Your mark: _
-  
-  PB.md Total Mark: _ / 8
-
 1) Get User Location
-    - User Story: As a York University sudent, I want the app to detect my current location so that I can easily find nearby spots to study.
+    - User Story: As a York University student, I want the app to detect my current location so that I can easily find nearby spots to study.
 
 2) Show Available Lecture Halls/Classrooms, Libraries and Cafes
-    - User Story: As a York University sudent, I want to see which lecture halls or classrooms are currently available so that I know where I can go depending on the available options.
+    - User Story: As a York University student, I want to see which lecture halls or classrooms are currently available so that I know where I can go depending on the available options.
 
 3) Show Lecture Halls/Classrooms, Libraries and Cafes Opening Soon
-    - User Story: As a York University sudent, I want to see which lecture halls or classrooms will open soon so that I can wait if I’m nearby and it’s convenient.
+    - User Story: As a York University student, I want to see which lecture halls or classrooms will open soon so that I can wait if I’m nearby and it’s convenient.
 
 4) Show Busy/Closed Lecture Halls/Classrooms, Libraries and Cafes
-    - User Story: As a York University sudent, I want to see which lecture halls or classrooms are currently busy or closed so that I don’t waste time trying to access them.
+    - User Story: As a York University student, I want to see which lecture halls or classrooms are currently busy or closed so that I don’t waste time trying to access them.
 
 5) Filter for Lecture Halls/Classrooms, Libraries or Cafes
-    - User Story: As a York University sudent, I want to filter the search results to only show lecture halls/classrooms, libraries or cafes because I prefer some of those options.
+    - User Story: As a York University student, I want to filter the search results to only show lecture halls/classrooms, libraries or cafes because I prefer some of those options.
 
 6) Show Map of Areas
-    - User Story: As a York University sudent, I want to view a map of the campus so that I can easily see where different buildings and facilities are located.
+    - User Story: As a York University student, I want to view a map of the campus so that I can easily see where different buildings and facilities are located.
 
 7) Label Map with Colour-Coded Pins for Status of Spots/Buildings
-     - User Story: As a York University sudent, I want the map to display color-coded pins for building statuses (available, closed, opening soon) so to help me visualize my options.
+     - User Story: As a York University student, I want the map to display color-coded pins for building statuses (available, closed, opening soon) so to help me visualize my options.
 
 8) Press Map Pins to Show More Details About Rooms
-    - User Story: As a York University sudent, I want to be able to tap on pins to see detailed information about room availability in each building so that I can plan where to go.
+    - User Story: As a York University student, I want to be able to tap on pins to see detailed information about room availability in each building so that I can plan where to go.
 
 9) Move Interactive Map Around to Explore Different Areas
-    - User Story: As a York University sudent, I want to move the map around so that I can explore different areas on campus.
+    - User Story: As a York University student, I want to move the map around so that I can explore different areas on campus.
 
 10) Expand Building to See Availability of Specific Rooms in the Building
-    - User Story: As a York University sudent, I want to expand a building on the map to see which specific rooms are available, so I can decide which room to go to.
+    - User Story: As a York University student, I want to expand a building on the map to see which specific rooms are available, so I can decide which room to go to.
 
 11) See Directions to Relevant Building Starting from Given Location
-    - User Story: As a York University sudent, I want to get directions from my current location to a selected building so that I can find my way there easily.
+    - User Story: As a York University student, I want to get directions from my current location to a selected building so that I can find my way there easily.
 
 12) Add a Rating for Different Spots
-    - User Story: As a York University sudent, I want to rate from 0 to 5 stars for different spots on campus so that I can share my experience with others.
+    - User Story: As a York University student, I want to rate from 0 to 5 stars for different spots on campus so that I can share my experience with others.
 
 13) See Other People’s Ratings for Different Spots
-    - User Story: As a York University sudent, I want to view other people’s ratings for different spots so that I can make informed decisions.
+    - User Story: As a York University student, I want to view other people’s ratings for different spots so that I can make informed decisions.
 
 14) See The Average Ratings for Different Spots
     - User Story: As a York University student, I want to see the average rating for different spots on campus so that I can quickly assess the general opinion.
