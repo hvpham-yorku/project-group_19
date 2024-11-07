@@ -2,7 +2,7 @@
 Objective: The objective of the project is to make an intuitive and user-friendly app for students to quickly and efficiently find study spaces on campus. The app will help students solve one of the most common challenges students face: finding suitable places to study in a large campus. Real-time information on available lecture halls, classrooms, and all other study spaces is provided, ensuring that underutilized places (such as empty lecture halls) turn out to be very resourceful as study spots. It also allows users to rate their overall experience on factors such as noise level, facilities, or seating comfort, hence allowing others to make informed choices based on what suits them best. Overall, this project aims to improve the experience of the student in finding a study area by reducing the time to search and increasing access to places that are conducive to productivity and focus.
 
 ## Part 2: The Key Personas
-1) Andrew, the Busy Commuter Student
+### Andrew, the Busy Commuter Student
  - Background: Andrew is a second-year commuter student who has a full schedule, balancing classes, assignments, and a part-time job. He often has gaps between classes and wants to use this time productively to complete assignments and stay on top of his workload.
  - Goals: Andrew wants to find a quiet, nearby study spot during breaks between classes to maximize his study time without wandering around campus.
  - Pain Points: Andrew struggles with:
@@ -11,7 +11,7 @@ Objective: The objective of the project is to make an intuitive and user-friendl
      - Being unproductive due to the lack of real-time information on study spot availability.
  - Motivations: Andrew is motivated to make the most of his time on campus. He values efficiency and wants to avoid unnecessary walking, as it eats into his study time and leaves him feeling rushed before his next class.
 
-2) Emily, the First-Year Student
+### Emily, the First-Year Student
  - Background: Emily is a first-year student who just started at York University and is unfamiliar with the campus layout. She's still adjusting to her new environment and often finds it overwhelming to locate places to study or relax.
  - Goals: Emily wants to easily navigate the campus and discover quiet, comfortable study spots without getting lost. As a new student, she’s looking for resources to help her feel more confident about where to go and how to find what she needs.
  - Pain Points: Emily struggles with:
@@ -20,7 +20,7 @@ Objective: The objective of the project is to make an intuitive and user-friendl
      - Spending too much time searching for places and feeling stressed due to her lack of familiarity.
  - Motivations: Emily is motivated to have a smooth and enjoyable transition to university life. She wants to feel comfortable on campus and access resources that can help her study efficiently.
 
- 3) Alex and Team, the Late-Night Study Group
+### Alex and Team, the Late-Night Study Group
  - Background: Alex is a third-year student who frequently works on group projects and often studies late into the night. He and his team members are looking for reliable, safe, and well-equipped study spaces for last-minute project sessions.
  - Goals: Alex and his group want to find 24-hour study spots on campus that have power outlets, enough seating for a group, and a safe environment to work late into the night.
  - Pain Points: The group struggles with:

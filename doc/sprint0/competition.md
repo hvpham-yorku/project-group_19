@@ -1,4 +1,6 @@
-Competitons:
+## Competitons:
+After some research, these are the potential competitions we found:
+
 1) https://rooms.yorku.dev/
   - This website allows users to find empty rooms at York University given classroom/building and time period inputs from users.
   - How is our product different? We will provide information regarding the *closest* buildings and rooms. We will visualize that information better using an interactive map and cleaner UI. We will extend the service to include libraries and cafes. And Finally, we will add support for directions and a rating/review system.
