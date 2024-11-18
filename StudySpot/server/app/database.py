@@ -36,6 +36,83 @@ def get_study_spots():
     connection = create_connection()
     if connection is None:
         return []
+    
+def get_hardcoded_temporary_study_spots():
+    """Returns hardcoded temporary study spots."""
+    return [
+        {
+            "building": "Ross Building",
+            "building_code": "RS",
+            "building_status": "Available",
+            "rooms": {
+                "101": {
+                    "roomNumber": "101",
+                    "slots": [
+                        {"StartTime": "08:00", "EndTime": "10:00", "Status": "Available"},
+                        {"StartTime": "10:00", "EndTime": "12:00", "Status": "Upcoming"},
+                        {"StartTime": "12:00", "EndTime": "14:00", "Status": "Available"}
+                    ]
+                },
+                "102": {
+                    "roomNumber": "102",
+                    "slots": [
+                        {"StartTime": "09:00", "EndTime": "11:00", "Status": "Available"},
+                        {"StartTime": "11:00", "EndTime": "13:00", "Status": "Upcoming"},
+                        {"StartTime": "13:00", "EndTime": "15:00", "Status": "Available"}
+                    ]
+                }
+            },
+            "coords": [43.7735, -79.5019]
+        },
+        {
+            "building": "Vari Hall",
+            "building_code": "VH",
+            "building_status": "Available",
+            "rooms": {
+                "201": {
+                    "roomNumber": "201",
+                    "slots": [
+                        {"StartTime": "08:00", "EndTime": "09:30", "Status": "Available"},
+                        {"StartTime": "09:30", "EndTime": "11:00", "Status": "Upcoming"},
+                        {"StartTime": "11:00", "EndTime": "12:30", "Status": "Available"}
+                    ]
+                },
+                "202": {
+                    "roomNumber": "202",
+                    "slots": [
+                        {"StartTime": "10:00", "EndTime": "12:00", "Status": "Available"},
+                        {"StartTime": "12:00", "EndTime": "14:00", "Status": "Upcoming"},
+                        {"StartTime": "14:00", "EndTime": "16:00", "Status": "Available"}
+                    ]
+                }
+            },
+            "coords": [43.7747, -79.5026]
+        },
+        {
+            "building": "Scott Library",
+            "building_code": "SL",
+            "building_status": "Available",
+            "rooms": {
+                "301": {
+                    "roomNumber": "301",
+                    "slots": [
+                        {"StartTime": "07:30", "EndTime": "09:30", "Status": "Available"},
+                        {"StartTime": "09:30", "EndTime": "11:30", "Status": "Upcoming"},
+                        {"StartTime": "11:30", "EndTime": "13:30", "Status": "Available"}
+                    ]
+                },
+                "302": {
+                    "roomNumber": "302",
+                    "slots": [
+                        {"StartTime": "08:00", "EndTime": "10:00", "Status": "Available"},
+                        {"StartTime": "10:00", "EndTime": "12:00", "Status": "Upcoming"},
+                        {"StartTime": "12:00", "EndTime": "14:00", "Status": "Available"}
+                    ]
+                }
+            },
+            "coords": [43.7732, -79.5004]
+        }
+    ]
 
     try:
         cursor = connection.cursor(dictionary=True)
