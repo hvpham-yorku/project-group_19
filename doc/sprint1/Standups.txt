@@ -1,0 +1,33 @@
+17/11/2023 - Sprint 1 Standup 1
+
+Ammar
+1. What did you work on since the last standup?
+- Researched the front end, and how the backend and frontend will interact
+2. What do you commit to next?
+- Setting up the front end structure, and how it will interact with the backend with Faris and Andrew
+3. When do you think you'll be done?
+- Tomorrow
+4. Do you have any blockers?
+- No
+
+Faris
+1. What did you work on since the last standup?
+- Analyzed the structure for the frontend
+2. What do you commit to next?
+- Implement the frontend and UI
+3. When do you think you'll be done?
+- Tomorrow
+4. Do you have any blockers?
+- No
+
+Andrew
+1. What did you work on since the last standup?
+- Researched and analysed the best database schema.
+- Researched how the SSADC scraper works (to scrape all the information about the lecture halls to the database)
+2. What do you commit to next?
+- I commit to start implementing the scraper and have all the database schemas ready.
+- Work with the rest of the team and discuss how they would want the data received from the backend to look like.
+3. When do you think you'll be done?
+- Around 3:00 on the 17th of nov
+4. Do you have any blockers?
+- No
