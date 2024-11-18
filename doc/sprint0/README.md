@@ -25,7 +25,7 @@ cd studyspot
 #### a. Set up a Virtual Environment
 Navigate to the `Server` directory and set up a Python virtual environment:
 ```bash
-cd backend
+cd server
 python3 -m venv venv
 source venv/bin/activate  # On Windows, use venv\Scripts\activate
 ```
@@ -35,7 +35,7 @@ source venv/bin/activate  # On Windows, use venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-2- Update the `.env` file in the `backend` directory with your database credentials. For example:
+2- Update the `.env` file in the `server` directory with your database credentials. For example:
 
 ```bash
 DB_HOST=localhost
@@ -56,7 +56,7 @@ The backend should now be running at `http://localhost:5000`.
 #### a. Install Node Dependencies
 Navigate to the `client` directory and install the necessary `Node.js` dependencies:
 ```bash
-cd ../frontend
+cd ../client
 npm install
 ```
 #### b. Configure Environment Variables for the Frontend
@@ -80,7 +80,7 @@ The frontend should now be running at `http://localhost:3000`.
 ### Project Directory Structure (so far)
 ```bash
 studyspot/
-├── backend/
+├── server/
 │   ├── app/
 │   │   ├── __init__.py            # Initializes the Flask app and registers routes
 │   │   ├── config.py              # Configurations for database and environment
@@ -91,7 +91,7 @@ studyspot/
 │   ├── .env                       # Environment variables for the backend
 │   ├── requirements.txt           # Python dependencies
 │   └── wsgi.py                    # Entry point for running the Flask app
-├── frontend/
+├── client/
 │   ├── public/                    # Static files
 │   ├── src/
 │   │   ├── pages/
