@@ -1,5 +1,3 @@
-// src/app/page.tsx
-
 "use client";
 import { useState } from 'react';
 import styles from './styles/HomePage.module.css';
@@ -52,26 +50,57 @@ export default function HomePage() {
             </button>
 
             {studySpots.length > 0 && (
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Room</th>
-                            <th>Lecture Hall</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {studySpots.map((spot, index) => (
-                            <tr key={index}>
-                                <td>{spot.room}</td>
-                                <td>{spot.lecture_hall}</td>
-                                <td>{spot.start_time}</td>
-                                <td>{spot.end_time}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <div className={styles.studySpots}>
+                    {studySpots.map((building, index) => (
+                        <details key={index} className={styles.building}>
+                            <summary>
+                                <span>
+                                    {building.building} ({building.building_code})
+                                </span>
+                                <span className={styles.statusLabel}>
+                                    {building.building_status.toLowerCase() === "available" ? (
+                                        <span className={styles.statusAvailable}>available</span>
+                                    ) : (
+                                        <span className={styles.statusUnavailable}>unavailable</span>
+                                    )}
+                                </span>
+                            </summary>
+                            <table className={styles.table}>
+                                <thead>
+                                    <tr>
+                                        <th>Room</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {Object.keys(building.rooms).map((roomKey) => {
+                                        const room = building.rooms[roomKey];
+                                        return room.slots.map((slot, slotIndex) => (
+                                            <tr key={`${roomKey}-${slotIndex}`}>
+                                                {slotIndex === 0 && (
+                                                    <td rowSpan={room.slots.length}>
+                                                        {room.roomNumber}
+                                                    </td>
+                                                )}
+                                                <td>{slot.StartTime}</td>
+                                                <td>{slot.EndTime}</td>
+                                                <td>
+                                                    {slot.Status.toLowerCase() === "available" ? (
+                                                        <span className={styles.statusAvailable}>Available</span>
+                                                    ) : (
+                                                        <span className={styles.statusUpcoming}>Upcoming</span>
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        ));
+                                    })}
+                                </tbody>
+                            </table>
+                        </details>
+                    ))}
+                </div>
             )}
         </div>
     );
