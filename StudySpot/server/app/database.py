@@ -106,13 +106,13 @@ def get_study_spots():
             room_number = row["roomNumber"]
             start_time = format_time(row["StartTime"])
             end_time = format_time(row["EndTime"])
-            status = row["Status"]
+            status = ""
 
             if building_name not in buildings:
                 buildings[building_name] = {
                     "building": building_name,
                     "building_code": building_code,
-                    "building_status": "Available",
+                    "building_status": "",
                     "rooms": {},
                 }
 
