@@ -36,6 +36,24 @@ def get_study_spots():
     connection = create_connection()
     if connection is None:
         return []
+    try:
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT room, lecture_hall, start_time, end_time FROM study_spots")
+        result = cursor.fetchall()
+        
+        # Convert timedelta objects to strings
+        for row in result:
+            if isinstance(row['start_time'], timedelta):
+                row['start_time'] = str(row['start_time'])
+            if isinstance(row['end_time'], timedelta):
+                row['end_time'] = str(row['end_time'])
+
+        return result
+    except Error as e:
+        print(f"Error fetching study spots: {e}")
+        return []
+    finally:
+        close_connection(connection)
     
 def get_hardcoded_temporary_study_spots():
     """Returns hardcoded temporary study spots."""
@@ -114,21 +132,4 @@ def get_hardcoded_temporary_study_spots():
         }
     ]
 
-    try:
-        cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT room, lecture_hall, start_time, end_time FROM study_spots")
-        result = cursor.fetchall()
-        
-        # Convert timedelta objects to strings
-        for row in result:
-            if isinstance(row['start_time'], timedelta):
-                row['start_time'] = str(row['start_time'])
-            if isinstance(row['end_time'], timedelta):
-                row['end_time'] = str(row['end_time'])
 
-        return result
-    except Error as e:
-        print(f"Error fetching study spots: {e}")
-        return []
-    finally:
-        close_connection(connection)
