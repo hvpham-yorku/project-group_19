@@ -6,6 +6,8 @@ from mysql.connector import Error
 from dotenv import load_dotenv
 from datetime import timedelta  # Import timedelta
 from app.config import Config  # Import Config for environment variables
+from datetime import datetime
+from datetime import timedelta
 
 # Load environment variables from .env
 load_dotenv()
@@ -31,104 +33,106 @@ def close_connection(connection):
     if connection and connection.is_connected():
         connection.close()
 
+
 def get_study_spots():
-    """Fetches all records from the study_spots table."""
+    """
+    Fetches all records for the current day and formats the output.
+    """
+    from datetime import datetime
+
+    print("Starting get_study_spots function...")  # Debugging log
+
     connection = create_connection()
     if connection is None:
+        print("Database connection failed.")
         return []
     
-def get_hardcoded_temporary_study_spots():
-    """Returns hardcoded temporary study spots."""
-    return [
-        {
-            "building": "Ross Building",
-            "building_code": "RS",
-            "building_status": "Available",
-            "rooms": {
-                "101": {
-                    "roomNumber": "101",
-                    "slots": [
-                        {"StartTime": "08:00", "EndTime": "10:00", "Status": "Available"},
-                        {"StartTime": "10:00", "EndTime": "12:00", "Status": "Upcoming"},
-                        {"StartTime": "12:00", "EndTime": "14:00", "Status": "Available"}
-                    ]
-                },
-                "102": {
-                    "roomNumber": "102",
-                    "slots": [
-                        {"StartTime": "09:00", "EndTime": "11:00", "Status": "Available"},
-                        {"StartTime": "11:00", "EndTime": "13:00", "Status": "Upcoming"},
-                        {"StartTime": "13:00", "EndTime": "15:00", "Status": "Available"}
-                    ]
-                }
-            },
-            "coords": [43.7735, -79.5019]
-        },
-        {
-            "building": "Vari Hall",
-            "building_code": "VH",
-            "building_status": "Available",
-            "rooms": {
-                "201": {
-                    "roomNumber": "201",
-                    "slots": [
-                        {"StartTime": "08:00", "EndTime": "09:30", "Status": "Available"},
-                        {"StartTime": "09:30", "EndTime": "11:00", "Status": "Upcoming"},
-                        {"StartTime": "11:00", "EndTime": "12:30", "Status": "Available"}
-                    ]
-                },
-                "202": {
-                    "roomNumber": "202",
-                    "slots": [
-                        {"StartTime": "10:00", "EndTime": "12:00", "Status": "Available"},
-                        {"StartTime": "12:00", "EndTime": "14:00", "Status": "Upcoming"},
-                        {"StartTime": "14:00", "EndTime": "16:00", "Status": "Available"}
-                    ]
-                }
-            },
-            "coords": [43.7747, -79.5026]
-        },
-        {
-            "building": "Scott Library",
-            "building_code": "SL",
-            "building_status": "Available",
-            "rooms": {
-                "301": {
-                    "roomNumber": "301",
-                    "slots": [
-                        {"StartTime": "07:30", "EndTime": "09:30", "Status": "Available"},
-                        {"StartTime": "09:30", "EndTime": "11:30", "Status": "Upcoming"},
-                        {"StartTime": "11:30", "EndTime": "13:30", "Status": "Available"}
-                    ]
-                },
-                "302": {
-                    "roomNumber": "302",
-                    "slots": [
-                        {"StartTime": "08:00", "EndTime": "10:00", "Status": "Available"},
-                        {"StartTime": "10:00", "EndTime": "12:00", "Status": "Upcoming"},
-                        {"StartTime": "12:00", "EndTime": "14:00", "Status": "Available"}
-                    ]
-                }
-            },
-            "coords": [43.7732, -79.5004]
-        }
-    ]
 
     try:
         cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT room, lecture_hall, start_time, end_time FROM study_spots")
-        result = cursor.fetchall()
-        
-        # Convert timedelta objects to strings
-        for row in result:
-            if isinstance(row['start_time'], timedelta):
-                row['start_time'] = str(row['start_time'])
-            if isinstance(row['end_time'], timedelta):
-                row['end_time'] = str(row['end_time'])
 
-        return result
-    except Error as e:
+        # Get the current day of the week
+        day_map = ["U", "M", "T", "W", "R", "F", "S"]
+        current_day = day_map[datetime.now().weekday()]
+
+        
+
+        # Query the database
+        query = """
+        SELECT 
+            b.building_name AS building,
+            b.building_code AS building_code,
+            r.room_name AS roomNumber,
+            a.start_time AS StartTime,
+            a.end_time AS EndTime,
+            CASE 
+                WHEN TIME(NOW()) BETWEEN a.start_time AND a.end_time THEN 'Upcoming'
+                ELSE 'Available'
+            END AS Status
+        FROM buildings b
+        JOIN rooms r ON b.building_id = r.building_id
+        JOIN availabilities a ON r.room_id = a.room_id
+        WHERE a.day = %s
+        ORDER BY b.building_name, r.room_name, a.start_time;
+        """
+        
+
+        cursor.execute(query, (current_day,))
+        result = cursor.fetchall()
+
+        
+
+        # Format the data
+        if not result:
+            
+            return []
+
+        def format_time(value):
+            if isinstance(value, timedelta):
+                # Convert timedelta to hours and minutes
+                total_seconds = value.total_seconds()
+                hours = int(total_seconds // 3600)
+                minutes = int((total_seconds % 3600) // 60)
+                return f"{hours:02}:{minutes:02}"
+            elif isinstance(value, datetime):
+                # If it's already a datetime object, format directly
+                return value.strftime("%H:%M")
+            return value  # For other cases, return as-is
+
+        buildings = {}
+        for row in result:
+            building_name = row["building"]
+            building_code = row["building_code"]
+            room_number = row["roomNumber"]
+            start_time = format_time(row["StartTime"])
+            end_time = format_time(row["EndTime"])
+            status = ""
+
+            if building_name not in buildings:
+                buildings[building_name] = {
+                    "building": building_name,
+                    "building_code": building_code,
+                    "building_status": "",
+                    "rooms": {},
+                }
+
+            if room_number not in buildings[building_name]["rooms"]:
+                buildings[building_name]["rooms"][room_number] = {
+                    "roomNumber": room_number,
+                    "slots": []
+                }
+
+            buildings[building_name]["rooms"][room_number]["slots"].append({
+                "StartTime": start_time,
+                "EndTime": end_time,
+                "Status": status
+            })
+
+        
+        return list(buildings.values())
+    except Exception as e:
         print(f"Error fetching study spots: {e}")
         return []
     finally:
         close_connection(connection)
+        print("Database connection closed.")  # Debugging log

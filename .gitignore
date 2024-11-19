@@ -60,3 +60,6 @@ htmlcov/
 
 # Ignore pytest cache
 .pytest_cache/
+
+
+scraped backup
