@@ -200,6 +200,7 @@ def get_cafes():
                     "building_code": "",
                     "building_status": "",
                     "rooms": {},
+                    "slots": [],  # Initialize slots properly
                 }
 
             cafes[cafe_name]["slots"].append({
