@@ -31,3 +31,51 @@ Andrew
 - Around 3:00 on the 17th of nov
 4. Do you have any blockers?
 - No
+
+18/11/2023 - Sprint 1 Standup 2
+Ammar
+1. What did you work on since the last standup?
+- Set up the project (including backend) on my machine
+- Tried using a UI library (radix)
+- Decided to use regular tailwind and typscript
+- Added logic to determine open/opening soon/closed buildings
+- Worked on expanding and collapsing each building
+2. What do you commit to next?
+- Add status dots to each room
+- Change table structure and margins
+- Remove database connection test button
+- Load data when the page loads
+- Organize UI components
+3. When do you think you'll be done?
+- Tomorrow
+4. Do you have any blockers?
+- No
+
+Faris
+1. What did you work on since the last standup?
+- Set up the project (including backend) on my machine
+- Played with the styles of the UI
+- Added features to the UI like a logo and an info button
+2. What do you commit to next?
+- Fix the UI and make it look better
+- Make sure that design is intuitive
+- Research on Cafes and libraries that are on York University campus to add to the database
+3. When do you think you'll be done?
+- Tomorrow
+4. Do you have any blockers?
+- No
+
+Andrew
+1. What did you work on since the last standup?
+- fixed the endpoints to deliver agreed information
+- scraping the required buildings.
+- Filling the database with the information, Jupiter notebook that have the method and functions I used to move the data from the Json files to the database
+- Building the python function to retrieve the data from the database
+- Updating the end point to return info from DB
+2. What do you commit to next?
+- Add the Cafes and libraries that are on York University campus to the database
+- Update the endpoint to deceiver all the data to the front end
+3. When do you think you'll be done?
+- Later today
+4. Do you have any blockers?
+- discussion with the team about the best possible way to deliver the information
