@@ -33,6 +33,7 @@ Andrew
 - No
 
 18/11/2023 - Sprint 1 Standup 2
+
 Ammar
 1. What did you work on since the last standup?
 - Set up the project (including backend) on my machine
@@ -79,3 +80,47 @@ Andrew
 - Later today
 4. Do you have any blockers?
 - discussion with the team about the best possible way to deliver the information
+
+20/11/2023 - Sprint 1 Standup 2
+
+Ammar
+1. What did you work on since the last standup?
+- Added status dots to each room
+- Change table structure and margins
+- Fix collapse, expand issues
+- Alot of styling
+2. What do you commit to next?
+- Remove database connection test button
+- Load data when the page loads
+3. When do you think you'll be done?
+- Tomorrow
+4. Do you have any blockers?
+- No
+
+Faris
+1. What did you work on since the last standup?
+- Worked on the frontend component
+- Added Libraries and Cafes into our list
+- Divided Lecture Halls, Libraries, and Cafe into sections
+2. What do you commit to next?
+- Fix the UI and make it look better
+- Create a logo
+- Work on info popup
+- Improve UI
+3. When do you think you'll be done?
+- Tomorrow
+4. Do you have any blockers?
+- No
+
+Andrew
+1. What did you work on since the last standup?
+- Add the Cafes and libraries that are on York University campus to the database
+- building two more functions to retrieve cafes and Libraries
+- Update the endpoint to deceiver all the data to the front end
+2. What do you commit to next?
+- Fix readme
+- Fix data
+3. When do you think you'll be done?
+- Tmrw
+4. Do you have any blockers?
+- no
