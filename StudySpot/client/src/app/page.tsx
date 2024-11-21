@@ -23,6 +23,8 @@ interface Building {
     rooms: { [key: string]: Room };
     coords: [number, number];
     distance: number;
+    type: "lecture_hall" | "cafe" | "library";
+    slots?: Slot[]; 
 }
 
 export default function HomePage() {
@@ -105,12 +107,34 @@ export default function HomePage() {
         setOpenBuildingIndex(prevIndex => (prevIndex === index ? null : index));
     };
 
+    const groupByType = (spots: StudySpot[]) => {
+        const grouped: { [key: string]: StudySpot[] } = {
+            lecture_hall: [],
+            cafe: [],
+            library: [],
+        };
+    
+        spots.forEach(spot => {
+            if (grouped[spot.type]) {
+                grouped[spot.type].push(spot);
+            }
+        });
+    
+        return grouped;
+    };
+    const groupedStudySpots = groupByType(studySpots); // Group study spots by type
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1>StudySpot</h1>
             </header>
-
+            
+            <header className={styles.header}>
+                <div className={styles.logoContainer}>
+                    <img src="/logo.png"  className={styles.logo} />
+                </div>
+            </header>
             <button onClick={handleTestConnection} className={styles.button}>
                 Test Connection to Backend
             </button>
@@ -118,99 +142,149 @@ export default function HomePage() {
             {connectionStatus && (
                 <p className={styles.status}>{connectionStatus}</p>
             )}
-
             <button onClick={handleFetchStudySpots} className={styles.button}>
                 Show Available Study Spots
             </button>
-
-            {studySpots.length > 0 && (
                 <div className={`${styles.studySpotsContainer} ${styles.centeredContainer}`}>
-                    <div className={styles.studySpots} style={{ borderTop: '1px solid #ccc' }}>
-                        {studySpots.map((building, index) => {
-                            let buildingStatus = building.building_status;
-                            let hasAvailable = false;
-                            let hasOpeningSoon = false;
-
-                            Object.keys(building.rooms).forEach(roomKey => {
-                                const room = building.rooms[roomKey];
-                                room.slots.forEach(slot => {
-                                    if (isAvailable(slot.StartTime, slot.EndTime)) {
-                                        hasAvailable = true;
-                                    } else if (isOpeningSoon(slot.StartTime)) {
-                                        hasOpeningSoon = true;
+                    {/* Lecture Halls Section */}
+                    {groupedStudySpots.lecture_hall.length > 0 && (
+                        <div className={styles.section}>
+                            <h2 className={styles.sectionTitle}>Lecture Halls</h2>
+                            <div className={styles.studySpots}>
+                                {groupedStudySpots.lecture_hall.map((building, index) => {
+                                    let buildingStatus = "Unavailable";
+                                    let hasAvailable = false;
+                                    let hasOpeningSoon = false;
+                                    Object.keys(building.rooms).forEach((roomKey) => {
+                                        const room = building.rooms[roomKey];
+                                        room.slots.forEach((slot) => {
+                                            if (isAvailable(slot.StartTime, slot.EndTime)) {
+                                                hasAvailable = true;
+                                            } else if (isOpeningSoon(slot.StartTime)) {
+                                                hasOpeningSoon = true;
+                                            }
+                                        });
+                                    });
+                                    if (hasAvailable) {
+                                        buildingStatus = "Available";
+                                    } else if (hasOpeningSoon) {
+                                        buildingStatus = "Opening Soon";
                                     }
-                                });
-                            });
-
-                            if (hasAvailable) {
-                                buildingStatus = "Available";
-                            } else if (hasOpeningSoon) {
-                                buildingStatus = "Opening Soon";
-                            } else {
-                                buildingStatus = "Unavailable";
-                            }
-
-                            return (
-                                <details key={index} className={styles.building} open={openBuildingIndex === index} style={{ borderBottom: '1px solid #ccc' }}>
-                                    <summary className={styles.buildingSummary} onClick={(e) => { e.preventDefault(); handleToggleBuilding(index); }}>
-                                        <span className={styles.buildingName}>
-                                            ▶ {building.building} ({building.building_code})
-                                        </span>
-                                        <span className={styles.statusLabel}>
-                                            <span className={
-                                                buildingStatus === "Available"
-                                                    ? styles.statusAvailable
-                                                    : buildingStatus === "Opening Soon"
-                                                    ? styles.statusOpeningSoon
-                                                    : styles.statusUnavailable
-                                            }>
-                                                {buildingStatus}
-                                            </span>
-                                        </span>
-                                    </summary>
-                                    <div className={`${styles.roomList} ${styles.dashedLineTop}`}>
-                                        {Object.keys(building.rooms).map((roomKey) => {
-                                            const room = building.rooms[roomKey];
-                                            let roomStatus = "Unavailable";
-                                            room.slots.forEach(slot => {
-                                                if (isAvailable(slot.StartTime, slot.EndTime)) {
-                                                    roomStatus = "Available";
-                                                } else if (isOpeningSoon(slot.StartTime)) {
-                                                    roomStatus = "Opening Soon";
-                                                }
-                                            });
-
-                                            return (
-                                                <div key={roomKey} className={`${styles.roomItem} ${styles.dashedLine}`}>
-                                                    <div className={styles.roomRow}>
-                                                        <div className={styles.roomHeader}>
-                                                            <span className={
-                                                                roomStatus === "Available"
-                                                                    ? styles.dotAvailable
-                                                                    : roomStatus === "Opening Soon"
-                                                                    ? styles.dotOpeningSoon
-                                                                    : styles.dotUnavailable
-                                                            }></span>
-                                                            <span className={styles.roomNumber}>{room.roomNumber}</span>
+                                    return (
+                                        <details
+                                            key={index}
+                                            className={styles.building}
+                                            open={openBuildingIndex === index}
+                                            style={{ borderBottom: "1px solid #ccc" }}
+                                        >
+                                            <summary
+                                                className={styles.buildingSummary}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleToggleBuilding(index);
+                                                }}
+                                            >
+                                                <span className={styles.buildingName}>
+                                                    ▶ {building.building} ({building.building_code})
+                                                </span>
+                                                <span className={styles.statusLabel}>
+                                                    <span
+                                                        className={
+                                                            buildingStatus === "Available"
+                                                                ? styles.statusAvailable
+                                                                : buildingStatus === "Opening Soon"
+                                                                ? styles.statusOpeningSoon
+                                                                : styles.statusUnavailable
+                                                        }
+                                                    >
+                                                        {buildingStatus}
+                                                    </span>
+                                                </span>
+                                            </summary>
+                                            <div className={`${styles.roomList} ${styles.dashedLineTop}`}>
+                                                {Object.keys(building.rooms).map((roomKey) => {
+                                                    const room = building.rooms[roomKey];
+                                                    let roomStatus = "Unavailable";
+                                                    room.slots.forEach((slot) => {
+                                                        if (isAvailable(slot.StartTime, slot.EndTime)) {
+                                                            roomStatus = "Available";
+                                                        } else if (isOpeningSoon(slot.StartTime)) {
+                                                            roomStatus = "Opening Soon";
+                                                        }
+                                                    });
+                                                    return (
+                                                        <div key={roomKey} className={`${styles.roomItem} ${styles.dashedLine}`}>
+                                                            <div className={styles.roomRow}>
+                                                                <div className={styles.roomHeader}>
+                                                                    <span
+                                                                        className={
+                                                                            roomStatus === "Available"
+                                                                                ? styles.dotAvailable
+                                                                                : roomStatus === "Opening Soon"
+                                                                                ? styles.dotOpeningSoon
+                                                                                : styles.dotUnavailable
+                                                                        }
+                                                                    ></span>
+                                                                    <span className={styles.roomNumber}>{room.roomNumber}</span>
+                                                                </div>
+                                                                <div className={styles.roomSlots}>
+                                                                    {room.slots.map((slot, slotIndex) => (
+                                                                        <span
+                                                                            key={`${roomKey}-${slotIndex}`}
+                                                                            className={`${styles.slotTime} ${styles.roomNumber}`}
+                                                                        >
+                                                                            {slot.StartTime} - {slot.EndTime}
+                                                                        </span>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div className={styles.roomSlots}>
-                                                            {room.slots.map((slot, slotIndex) => (
-                                                                <span key={`${roomKey}-${slotIndex}`} className={`${styles.slotTime} ${styles.roomNumber}`}>
-                                                                    {slot.StartTime} - {slot.EndTime}
-                                                                </span>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
+                                                    );
+                                                })}
+                                            </div>
+                                        </details>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    )}
+                    {/* Libraries Section */}
+                    {groupedStudySpots.library.length > 0 && (
+                        <div className={styles.section}>
+                            <h2 className={styles.sectionTitle}>Libraries</h2>
+                            <div className={styles.studySpots}>
+                                {groupedStudySpots.library.map((library, index) => (
+                                    <div key={index} className={styles.libraryRow}>
+                                        <span className={styles.libraryName}>{library.building}</span>
+                                        <span className={styles.libraryTime}>
+                                            {library.slots && library.slots.length > 0
+                                                ? `${library.slots[0].StartTime} - ${library.slots[0].EndTime}`
+                                                : "No timings available"}
+                                        </span>
                                     </div>
-                                </details>
-                            );
-                        })}
-                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                    {/* Cafes Section */}
+                    {groupedStudySpots.cafe.length > 0 && (
+                        <div className={styles.section}>
+                            <h2 className={styles.sectionTitle}>Cafes</h2>
+                            <div className={styles.studySpots}>
+                                {groupedStudySpots.cafe.map((cafe, index) => (
+                                    <div key={index} className={styles.cafeRow}>
+                                        <span className={styles.cafeName}>{cafe.building}</span>
+                                        <span className={styles.cafeTime}>
+                                            {cafe.slots && cafe.slots.length > 0
+                                                ? `${cafe.slots[0].StartTime} - ${cafe.slots[0].EndTime}`
+                                                : "No timings available"}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
         </div>
     );
 }

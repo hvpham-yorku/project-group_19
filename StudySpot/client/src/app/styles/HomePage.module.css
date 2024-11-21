@@ -3,6 +3,7 @@
 .container {
     text-align: center;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .header {
@@ -69,13 +70,23 @@
     background-color: #28a745; /* Green background */
     color: white; /* White text */
     border: 1px solid #28a745; /* Green border to match the background */
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
 }
 
 /* Styling for 'unavailable' label */
 .statusUnavailable {
     background-color: #dc3545; /* Red background */
-    color: white; /* White text */
+    color: rgb(255, 255, 255); /* White text */
     border: 1px solid #dc3545; /* Red border to match the background */
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
 }
 
 /* Optional styling for 'open now' label if you have it */
@@ -83,6 +94,12 @@
     background-color: #17a2b8; /* Blue background */
     color: white; /* White text */
     border: 1px solid #17a2b8; /* Blue border to match the background */
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+  
 }
 
 /* Styling for 'opening soon' label */
@@ -90,6 +107,11 @@
     background-color: #ffc107; /* Yellow background */
     color: white; /* Black text for readability */
     border: 1px solid #ffc107; /* Yellow border to match the background */
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
 }
 
 /* Add styles for the availability dot */
@@ -241,3 +263,69 @@
 .buildingSummary:hover {
     background-color: #505050;
 }
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+    color: #fcfbfb;
+    text-align: left;
+}
+
+.libraryRow, .cafeRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-colo 0.3s ease;
+}
+
+.cafeRow:hover, .libraryRow:hover{
+    background-color: #505050;
+}
+
+
+.libraryName, .cafeName {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.libraryTime, .cafeTime {
+    font-size: 0.9rem;
+    color: #fcfcfc;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: left; /* Center the logo horizontally */
+    align-items: center; /* Center the logo vertically */
+    margin-bottom: 20px; /* Add spacing below the logo */
+    margin-left: 100px;
+}
+
+
+.logo {
+    width: 250px; /* Default size */
+    height: auto;
+    max-width: 100%; /* Prevent the logo from exceeding its container */
+}
+
+@media (min-width: 768px) {
+    .logo {
+        width: 175px; /* Slightly larger on larger screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .logo {
+        width: 250px; /* Larger on desktop screens */
+    }
+}
+
