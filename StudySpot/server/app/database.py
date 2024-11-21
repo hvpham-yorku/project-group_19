@@ -196,7 +196,7 @@ def get_cafes():
 
             if cafe_name not in cafes:
                 cafes[cafe_name] = {
-                    "building": cafe_name + " - " + location,
+                    "building": cafe_name,
                     "building_code": "",
                     "building_status": "",
                     "rooms": {},
