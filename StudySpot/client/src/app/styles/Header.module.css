@@ -1,0 +1,15 @@
+/* Style for the title text */
+.title {
+    font-size: 35px; /* Adjust the font size as needed */
+    display: flex;
+    align-items: center; /* Vertically center the text with respect to the logo */
+}
+
+/* Center the header horizontally at the top of the page */
+.header {
+    display: flex;
+    align-items: center; /* Vertically align logo and text */
+    justify-content: center; /* Center header horizontally */
+    margin-top: 20px; /* Add some space at the top */
+    width: 100%; /* Make sure it takes full width for horizontal centering */
+}

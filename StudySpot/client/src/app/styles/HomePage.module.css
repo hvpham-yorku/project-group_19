@@ -6,63 +6,9 @@
     margin-bottom: 50px;
 }
 
-.header {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #45a049;
-}
-
-.status {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-}
-
-.table th,
-.table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-    color: white;
-}
-
-.table th {
-    background-color: #333;
-    font-weight: bold;
-}
-
-/* Label styles for availability status */
 .statusLabel {
-    display: inline-block;
-    padding: 6px 12px;  /* Add some padding for a neat appearance */
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 20px;  /* Rounded corners for the box */
-    text-transform: capitalize; /* Capitalize the text */
-    color: white; /* White text */
-    margin-left: 10px; /* Space between the building name and label */
+    margin-left: 1rem;
+    text-align: right;
 }
 
 /* Styling for 'available' label */
@@ -114,51 +60,18 @@
     border-radius: 5px;
 }
 
-/* Add styles for the availability dot */
-.roomStatusDot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;  /* Make it circular */
-    margin-left: 10px;   /* Add some space between room number and dot */
-}
-
-/* Green dot for available room */
-.roomAvailable {
-    background-color: #28a745; /* Green */
-}
-
-/* Red dot for unavailable room */
-.roomUnavailable {
-    background-color: #dc3545; /* Red */
-}
-
-
-/* CSS for alignment */
-.buildingSummary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .buildingName {
     flex: 1;
     text-align: left;
 }
 
-.statusLabel {
-    margin-left: 1rem;
-    text-align: right;
-}
-
 /* CSS for scrollable container */
 .studySpotsContainer {
-    max-height: 70vw; /* Limit height to 400px */
+    max-height: 42vw; /* Limit height to 400px */
     overflow-y: auto; /* Enable vertical scrolling */
-    border: 1px solid #ccc; /* Optional: Add a border to indicate scrollable area */
     padding: 1rem;
     margin-top: 1rem;
-    width: 50vw;  /* Limit width to 600px */
+    width: 60vw;  /* Limit width to 600px */
 }
 
 /* CSS to center the container */
@@ -170,11 +83,10 @@
 
 /* CSS updates for the colored dots */
 /* Add these styles to your HomePage.module.css */
-
 .dotAvailable {
     height: 10px;
     width: 10px;
-    background-color: green;
+    background-color: rgb(0, 255, 0);
     border-radius: 50%;
     display: inline-block;
     margin-right: 8px;
@@ -183,7 +95,7 @@
 .dotOpeningSoon {
     height: 10px;
     width: 10px;
-    background-color: yellow;
+    background-color: rgb(229, 255, 0);
     border-radius: 50%;
     display: inline-block;
     margin-right: 8px;
@@ -265,7 +177,7 @@
 }
 
 .section {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .sectionTitle {
@@ -294,27 +206,11 @@
 
 .libraryName, .cafeName {
     font-size: 1rem;
-    font-weight: bold;
 }
 
 .libraryTime, .cafeTime {
     font-size: 0.9rem;
     color: #fcfcfc;
-}
-
-.logoContainer {
-    display: flex;
-    justify-content: left; /* Center the logo horizontally */
-    align-items: center; /* Center the logo vertically */
-    margin-bottom: 20px; /* Add spacing below the logo */
-    margin-left: 100px;
-}
-
-
-.logo {
-    width: 250px; /* Default size */
-    height: auto;
-    max-width: 100%; /* Prevent the logo from exceeding its container */
 }
 
 @media (min-width: 768px) {
@@ -329,3 +225,35 @@
     }
 }
 
+/* Center the header horizontally at the top of the page */
+.header {
+    display: flex;
+    align-items: center; /* Vertically align logo and text */
+    justify-content: center; /* Center header horizontally */
+    margin-top: 20px; /* Add some space at the top */
+    width: 100%; /* Make sure it takes full width for horizontal centering */
+}
+
+/* Logo container and spacing */
+.logoContainer {
+    margin-right: -20px; /* Reduce space between logo and text */
+}
+
+/* Style for the logo */
+.logo {
+    width: 100px; /* Adjust the size of the logo as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+/* Style for the title text */
+.title {
+    font-size: 35px; /* Adjust the font size as needed */
+    display: flex;
+    align-items: center; /* Vertically center the text with respect to the logo */
+}
+
+.sectionTitle:hover {
+    text-decoration: underline; /* Add underline on hover */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for the background color */
+}
