@@ -1,10 +1,12 @@
 -- Add missing library
+-- adding static libraries information
 INSERT INTO libraries (name, location, website) VALUES
 ('Scott Library', 'Central Square', NULL),
 ('Bronfman Business Library', 'Schulich School of Business', NULL),
 ('Steacie Science and Engineering Library', '136 Campus Walk', NULL);
 
 -- Add missing cafe
+-- adding static cafe information
 INSERT INTO cafes (name, location) VALUES
 ('La Prep - York Lanes', ''),
 ('Break Cafe - Second Student Center', ''),

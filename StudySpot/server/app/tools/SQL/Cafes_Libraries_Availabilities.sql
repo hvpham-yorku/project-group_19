@@ -1,5 +1,7 @@
--- Cafes
+
+-- inserting the availabilities of the libraries and cafes.
 INSERT INTO facility_availabilities (facility_type, facility_id, day, open_time, close_time) VALUES
+-- Cafes
 -- La Prep (cafe_id = 12)
 ('cafe', 12, 'M', '08:00', '21:00'),
 ('cafe', 12, 'T', '08:00', '21:00'),

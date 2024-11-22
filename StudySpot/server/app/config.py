@@ -2,7 +2,9 @@
 
 import os
 from dotenv import load_dotenv
-
+"""
+This file loads the information from the env variables. Allowing a common single access to the info without redundancy. 
+"""
 # Load environment variables from .env file
 load_dotenv()
 

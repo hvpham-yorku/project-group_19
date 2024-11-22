@@ -2,6 +2,7 @@
 
 from app import create_app
 
+'''This file is a single entry to run the application'''
 app = create_app()
 
 if __name__ == "__main__":

@@ -8,6 +8,9 @@ from app.routes.study_spots import study_spots_bp
 
 
 def create_app():
+    """
+    Function responsible for registering the routs and accespting the requests
+    """
     app = Flask(__name__)
     app.config.from_object(Config)
 
