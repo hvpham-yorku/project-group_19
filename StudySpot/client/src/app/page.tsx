@@ -27,7 +27,7 @@ interface Building {
     coords: [number, number];
     distance: number;
     type: "lecture_hall" | "cafe" | "library";
-    slots?: Slot[]; 
+    slots?: Slot[];
 }
 
 export default function HomePage() {
@@ -36,7 +36,8 @@ export default function HomePage() {
     const [currentTime, setCurrentTime] = useState<string>("");
     const [openBuildingIndex, setOpenBuildingIndex] = useState<number | null>(null);
     const [dataLoaded, setDataLoaded] = useState(false);
-    const [isLoading, setIsLoading] = useState(false); 
+    const [isLoading, setIsLoading] = useState(false);
+    const [userLocation, setUserLocation] = useState<{ latitude: number | null, longitude: number | null }>({ latitude: null, longitude: null });
 
     // Function to check if current time is within a slot's time range
     const isAvailable = (startTime: string, endTime: string): boolean => {
@@ -81,6 +82,31 @@ export default function HomePage() {
         }, 60000); // Update every minute
 
         return () => clearInterval(interval); // Clean up on component unmount
+    }, []);
+
+    // Request location access on component mount
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setUserLocation({
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                    });
+                    console.log("User Location: ", position.coords.latitude, position.coords.longitude);
+                },
+                (error) => {
+                    // Default to YorkU location
+                    setUserLocation({
+                        latitude: 43.772861,
+                        longitude: -79.503471,
+                    });
+                    console.error("Location request denied", error);
+                }
+            );
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
     }, []);
 
     const handleFetchStudySpots = async () => {
@@ -366,8 +392,6 @@ export default function HomePage() {
                     </details>
                 )}
             </div>
-
-
         </div>
     );
 }
