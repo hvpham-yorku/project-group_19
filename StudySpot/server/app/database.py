@@ -61,6 +61,7 @@ def get_lecture_halls():
         SELECT 
             b.building_name AS building,
             b.building_code AS building_code,
+            ST_AsText(b.location) AS location,
             r.room_name AS roomNumber,
             a.start_time AS StartTime,
             a.end_time AS EndTime,
@@ -86,6 +87,12 @@ def get_lecture_halls():
             
             return []
 
+        def parse_location(location):
+            if location and location.startswith("POINT("):
+                coords = location[6:-1].split()
+                return tuple(map(float, coords))
+            return None
+        
         def format_time(value):
             if isinstance(value, timedelta):
                 # Convert timedelta to hours and minutes
@@ -102,6 +109,7 @@ def get_lecture_halls():
         for row in result:
             building_name = row["building"]
             building_code = row["building_code"]
+            location = parse_location(row["location"])
             room_number = row["roomNumber"]
             start_time = format_time(row["StartTime"])
             end_time = format_time(row["EndTime"])
@@ -111,6 +119,7 @@ def get_lecture_halls():
                 buildings[building_name] = {
                     "building": building_name,
                     "building_code": building_code,
+                    "location": location,
                     "building_status": "",
                     "rooms": {},
                 }
@@ -134,7 +143,7 @@ def get_lecture_halls():
         return []
     finally:
         close_connection(connection)
-        print("Database connection closed.")  # Debugging log
+        print("Lec Halls, Database connection closed.")  # Debugging log
 
 def get_cafes():
     """
@@ -159,7 +168,7 @@ def get_cafes():
         query = """
         SELECT 
             c.name AS cafe_name,
-            c.location AS location,
+            ST_AsText(c.location) AS location,
             a.open_time AS StartTime,
             a.close_time AS EndTime
         FROM cafes c
@@ -174,7 +183,12 @@ def get_cafes():
         # Format the data
         if not result:
             return []
-
+        
+        def parse_location(location):
+            if location and location.startswith("POINT("):
+                coords = location[6:-1].split()
+                return tuple(map(float, coords))
+            return None
         def format_time(value):
             if isinstance(value, timedelta):
                 # Convert timedelta to hours and minutes
@@ -190,13 +204,14 @@ def get_cafes():
         cafes = {}
         for row in result:
             cafe_name = row["cafe_name"]
-            location = row["location"]
+            location = parse_location(row["location"])
             start_time = format_time(row["StartTime"])
             end_time = format_time(row["EndTime"])
 
             if cafe_name not in cafes:
                 cafes[cafe_name] = {
                     "building": cafe_name,
+                    "location": location,
                     "building_code": "",
                     "building_status": "",
                     "rooms": {},
@@ -240,7 +255,7 @@ def get_libraries():
         query = """
         SELECT 
             l.name AS library_name,
-            l.location AS location,
+            ST_AsText(l.location) AS location,
             l.website AS website,
             a.open_time AS StartTime,
             a.close_time AS EndTime
@@ -257,6 +272,12 @@ def get_libraries():
         if not result:
             return []
 
+        def parse_location(location):
+            if location and location.startswith("POINT("):
+                coords = location[6:-1].split()
+                return tuple(map(float, coords))
+            return None
+        
         def format_time(value):
             if isinstance(value, timedelta):
                 # Convert timedelta to hours and minutes
@@ -272,7 +293,7 @@ def get_libraries():
         libraries = {}
         for row in result:
             library_name = row["library_name"]
-            location = row["location"]
+            location = parse_location(row["location"])
             website = row["website"]
             start_time = format_time(row["StartTime"])
             end_time = format_time(row["EndTime"])
@@ -280,6 +301,7 @@ def get_libraries():
             if library_name not in libraries:
                 libraries[library_name] = {
                     "building": library_name,
+                    "location": location,
                     "building_code": "",
                     "website": website,
                     "building_status": "",
