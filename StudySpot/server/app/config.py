@@ -15,5 +15,6 @@ class Config:
     DB_PASSWORD = os.getenv("StudySpot_DB_PASSWORD")
     DB_NAME = os.getenv("StudySpot_DB_NAME")
     DB_PORT = int(os.getenv("DB_PORT", 3306))  # Default to 3306 if not set
+    GOOGLE_MAPS_API_KEY = os.getenv("Google_API")
 
 
