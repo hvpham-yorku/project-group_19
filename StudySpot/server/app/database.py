@@ -54,8 +54,6 @@ def get_lecture_halls():
         day_map = ["U", "M", "T", "W", "R", "F", "S"]
         current_day = day_map[datetime.now().weekday()]
 
-        
-
         # Query the database
         query = """
         SELECT 
@@ -75,12 +73,9 @@ def get_lecture_halls():
         WHERE a.day = %s
         ORDER BY b.building_name, r.room_name, a.start_time;
         """
-        
-
+    
         cursor.execute(query, (current_day,))
         result = cursor.fetchall()
-
-        
 
         # Format the data
         if not result:

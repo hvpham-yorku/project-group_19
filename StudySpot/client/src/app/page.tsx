@@ -73,6 +73,52 @@ export default function HomePage() {
         return now.getHours() * 60 + now.getMinutes();
     };
 
+    // function to sort the location based on the given location Lat and Lon
+    // uses Haversine formula
+    // takes in the grouped list of buildings and current location 
+    // sort each list in groupedlist
+    const sortStudySpotsByProximity = (
+        groupedStudySpots: { [key: string]: any[] }, // Accepts grouped study spots
+        currentLocation: { latitude: number; longitude: number }
+    ): void => {
+        const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
+            const toRadians = (degree: number) => (degree * Math.PI) / 180;
+            const R = 6371; // Earth's radius in kilometers
+            const dLat = toRadians(lat2 - lat1);
+            const dLon = toRadians(lon2 - lon1);
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c; // Distance in kilometers
+        };
+    
+        // Sort each type of study spot
+        Object.keys(groupedStudySpots).forEach((type) => {
+            groupedStudySpots[type].sort((a, b) => {
+                const [lonA, latA] = a.location; // Access the location tuple
+                const [lonB, latB] = b.location;
+    
+                const distanceA = calculateDistance(
+                    currentLocation.latitude,
+                    currentLocation.longitude,
+                    latA,
+                    lonA
+                );
+                const distanceB = calculateDistance(
+                    currentLocation.latitude,
+                    currentLocation.longitude,
+                    latB,
+                    lonB
+                );
+    
+                return distanceA - distanceB; // Sort ascending by distance
+            });
+        });
+    };
+    
+
     // Update current time every minute
     useEffect(() => {
         const interval = setInterval(() => {
@@ -146,6 +192,14 @@ export default function HomePage() {
     };
     const groupedStudySpots = groupByType(studySpots); // Group study spots by type
 
+    // Sort groupedStudySpots by proximity using the user's current location
+    if (userLocation.latitude !== null && userLocation.longitude !== null) {
+        sortStudySpotsByProximity(groupedStudySpots, {
+            latitude: userLocation.latitude,
+            longitude: userLocation.longitude,
+        });
+        console.log("Sort success.")
+    }
     return (
         <div className={styles.container}>
             {/* Header component */}
