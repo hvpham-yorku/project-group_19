@@ -257,3 +257,35 @@
     cursor: pointer;
     transition: background-color 0.3s ease; /* Smooth transition for the background color */
 }
+
+.container {
+    display: flex;
+    flex-direction: column; /* Keeps the header on top */
+    height: 100vh; /* Full height of the screen */
+    width: 100vh;
+}
+
+.studySpotsContainer {
+    display: flex; /* Make the study spots and map side-by-side */
+    flex: 1; /* Take up the remaining height after the header */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.left {
+    flex: 1; /* The left section takes up 1/3 of the width */
+    overflow-y: auto; /* Enable scrolling if the content overflows */
+    padding: 20px;
+    background-color: #1c1c1c; /* Optional: Background color for contrast */
+    border-right: 1px solid #333; /* Optional: Divider */
+}
+
+.right {
+    flex: 2; /* The right section takes up 2/3 of the width */
+    position: relative;
+    background-color: #000; /* Optional: Background color for map contrast */
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
