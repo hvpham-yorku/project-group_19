@@ -51,7 +51,7 @@ def get_lecture_halls():
         cursor = connection.cursor(dictionary=True)
 
         # Get the current day of the week
-        day_map = ["U", "M", "T", "W", "R", "F", "S"]
+        day_map = ["M", "T", "W", "R", "F", "S", "U"]
         current_day = day_map[datetime.now().weekday()]
 
         # Query the database
@@ -156,7 +156,7 @@ def get_cafes():
         cursor = connection.cursor(dictionary=True)
 
         # Get the current day of the week
-        day_map = ["U", "M", "T", "W", "R", "F", "S"]
+        day_map = ["M", "T", "W", "R", "F", "S", "U"]
         current_day = day_map[datetime.now().weekday()]
 
         # Query the database
@@ -243,7 +243,7 @@ def get_libraries():
         cursor = connection.cursor(dictionary=True)
 
         # Get the current day of the week
-        day_map = ["U", "M", "T", "W", "R", "F", "S"]
+        day_map = ["M", "T", "W", "R", "F", "S", "U"]
         current_day = day_map[datetime.now().weekday()]
 
         # Query the database

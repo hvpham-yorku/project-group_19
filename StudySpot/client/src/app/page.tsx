@@ -42,6 +42,8 @@ export default function HomePage() {
     const [isLoading, setIsLoading] = useState(false);
     const [userLocation, setUserLocation] = useState<{ latitude: number | null, longitude: number | null }>({ latitude: null, longitude: null });
     const mapContainerRef = useRef<HTMLDivElement | null>(null); // Reference for the map container
+    const mapRef = useRef<mapboxgl.Map | null>(null); // Store map instacne
+    const markersRef = useRef<mapboxgl.Marker[]>([]); // Track active markers 
 
     // Function to check if current time is within a slot's time range
     const isAvailable = (startTime: string, endTime: string): boolean => {
@@ -122,6 +124,18 @@ export default function HomePage() {
         });
     };
 
+    // Helper function to color markers based on building status
+    const getMarkerClass = (status: string): string => {
+        switch (status) {
+            case "Available":
+                return "h-3 w-3 rounded-full bg-green-500 shadow-[0px_0px_4px_2px_rgba(34,197,94,0.7)]";// Green marker
+            case "Opening Soon":
+                return "h-3 w-3 rounded-full bg-amber-400 shadow-[0px_0px_4px_2px_rgba(245,158,11,0.9)]"; // Amber marker
+            case "Unavailable":
+            default:
+                return "h-3 w-3 rounded-full bg-red-500 shadow-[0px_0px_4px_2px_rgba(239,68,68,0.9)]"; // Red marker
+        }
+    };
 
     // Update current time every minute
     useEffect(() => {
@@ -159,37 +173,139 @@ export default function HomePage() {
         }
     }, []);
 
-    // Initialize the Mapbox map
+    // Initialize map on first render
     useEffect(() => {
+        if (!studySpots.length) return; // Wait until studySpots is populated
+
         const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
         if (!mapboxToken) {
-            console.error("Mapbox token is missing!")
+            console.error("Mapbox token is missing!");
             return;
         }
         mapboxgl.accessToken = mapboxToken;
 
         // Create map instance
-        const map = new mapboxgl.Map({
+        mapRef.current = new mapboxgl.Map({
             container: mapContainerRef.current as HTMLElement,
-            style: "mapbox://styles/mapbox/streets-v11", // Map style
-            center: [-79.503471, 43.772861], // Default center (York University)
+            style: "mapbox://styles/mapbox/standard",
+            center: [-79.503471, 43.772861], // Default to YorkU location if no user location
             zoom: 14,
         });
 
+        // Add user location marker
+        if (userLocation && userLocation.latitude && userLocation.longitude) {
+            const userMarkerElement = document.createElement("div");
+            userMarkerElement.className =
+                "h-3 w-3 border-[1.5px] border-white rounded-full bg-blue-500 shadow-[0px_0px_4px_2px_rgba(14,165,233,1)]";;
+            new mapboxgl.Marker(userMarkerElement)
+                .setLngLat([userLocation.longitude, userLocation.latitude])
+                .addTo(mapRef.current);
+        }
+
+        // Add markers for buildings
+        studySpots.forEach((building) => {
+            if (building.coords && Array.isArray(building.coords) && building.coords.length === 2) {
+                const [lng, lat] = building.coords;
+
+
+                if (typeof lng === "number" && typeof lat === "number") {
+                    console.log(`Building: ${building.building}, Status: ${building.building_status}`);
+                    console.log("Study spots data:", studySpots);
+                    const markerClass = getMarkerClass(building.building_status);
+                    // Create marker element
+                    const markerElement = document.createElement("div");
+                    markerElement.className = `marker ${markerClass}`;
+
+                    // Add a click event to the marker
+                    markerElement.addEventListener("click", () => {
+                        // Trigger dropdown for the corresponding building
+                        const accordionItem = document.getElementById(building.building_code);
+                        if (accordionItem) {
+                            console.log("Found accordion item:", accordionItem);
+                            accordionItem.scrollIntoView({ behavior: "smooth", block: "start" });
+                            if ("open" in accordionItem) {
+                                accordionItem.open = true; // Open the dropdown (if it’s a <details>)
+                            } else {
+                                accordionItem.classList.add("open"); // Add an open class
+                            }
+                        } else {
+                            console.warn('Accordion item for ${building.building_code} not found.')
+                        }
+                    })
+
+                    // Add the marker to the map
+                    new mapboxgl.Marker(markerElement)
+                        .setLngLat([lng, lat])
+                        .addTo(mapRef.current);
+                } else {
+                    console.error(`Invalid coordinates for building: ${building.building}`, building.coords);
+
+                }
+            } else {
+                console.error(`Missing coordinates for building: ${building.building}`);
+            }
+        });
+
         return () => {
-            map.remove();
+            mapRef.current.remove();
         };
-    }, []);
+    }, [studySpots, userLocation]);
 
     const handleFetchStudySpots = async () => {
         try {
             setIsLoading(true); // Set loading to true when fetch starts
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/study-spots`);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
             const data = await response.json();
-            setStudySpots(data);
+            
+            const transformedData = data.map((building) => {
+                let buildingStatus = "Unavailable"; // Default status
+                let hasAvailable = false;
+                let hasOpeningSoon = false;
+                if (building.type === "lecture_hall"){
+                    // Check availability for all rooms and slots
+                    Object.keys(building.rooms).forEach((roomKey) => {
+                    const room = building.rooms[roomKey];
+                    room.slots.forEach((slot) => {
+                        //console.log(`Building: ${building.building}, Room: ${roomKey}, Slot Start: ${slot.StartTime}, Slot End: ${slot.EndTime}`);
+                        if (isAvailable(slot.StartTime, slot.EndTime)) {
+                            hasAvailable = true;
+                        } else if (isOpeningSoon(slot.StartTime)) {
+                            hasOpeningSoon = true;
+                        }
+                    });
+                });
+                } else if (building.type === "cafe" || building.type === "library"){
+                    // Check availability directly at the building level for cafes and libraries
+                    building.slots?.forEach((slot) => {
+                        if (isAvailable(slot.StartTime, slot.EndTime)) {
+                            hasAvailable = true;
+                        } else if (isOpeningSoon(slot.StartTime)) {
+                            hasOpeningSoon = true;
+                        }
+                    });
+                }
+                
+                // Determine building status
+                if (hasAvailable) {
+                    buildingStatus = "Available";
+                } else if (hasOpeningSoon) {
+                    buildingStatus = "Opening Soon";
+                }
+
+                return {
+                    ...building,
+                    coords: building.location
+                        ? [building.location[0], building.location[1]] // Convert tuple to array
+                        : null, // Handle missing location
+                    building_status: buildingStatus, // Add calculated building status
+                };
+            });
+
+            console.log("Transformed Data:", transformedData);
+            setStudySpots(transformedData);
             setDataLoaded(true);
+
         } catch (error) {
             console.error("Failed to fetch study spots:", error);
         } finally {
