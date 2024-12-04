@@ -16,7 +16,7 @@ def create_app():
 
     # Enable CORS for the app
     # Allow only requests from the frontend at http://localhost:3000
-    CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     # Register blueprints
     app.register_blueprint(test_bp, url_prefix="/api")

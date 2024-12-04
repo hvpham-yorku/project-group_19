@@ -14,7 +14,7 @@
 /coverage
 
 # next.js
-/.next/
+#/.next/
 /out/
 
 # production
@@ -33,7 +33,7 @@ yarn-error.log*
 .env*
 
 # vercel
-.vercel
+#.vercel
 
 # typescript
 *.tsbuildinfo
