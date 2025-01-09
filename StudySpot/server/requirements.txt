@@ -1,12 +1,5 @@
-alembic==1.13.3
-blinker==1.8.2
-click==8.1.7
 colorama==0.4.6
-Flask==3.0.3
-Flask-Cors==5.0.0
-Flask-Migrate==4.0.7
-Flask-MySQLdb==2.0.0
-Flask-SQLAlchemy==3.1.1
+Flask==2.2.2
 Werkzeug==2.2.2
 google-api-python-client==2.32.0
 mysql-connector-python==8.0.28
