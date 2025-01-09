@@ -28,6 +28,7 @@ interface Building {
     building_status: string;
     rooms: { [key: string]: Room };
     coords: [number, number];
+    location: [number, number];
     distance: number;
     type: "lecture_hall" | "cafe" | "library";
     slots?: Slot[];
@@ -36,7 +37,7 @@ interface Building {
 export default function HomePage() {
     //const [connectionStatus, setConnectionStatus] = useState<string | null>("Connected");
     const [studySpots, setStudySpots] = useState<Building[]>([]);
-    //const [currentTime, setCurrentTime] = useState<string>("");
+    const [currentTime, setCurrentTime] = useState<string>("");
     const [openBuildingIndex, setOpenBuildingIndex] = useState<number | null>(null);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +45,7 @@ export default function HomePage() {
     const mapContainerRef = useRef<HTMLDivElement | null>(null); // Reference for the map container
     const mapRef = useRef<mapboxgl.Map | null>(null); // Store map instacne
     //const markersRef = useRef<mapboxgl.Marker[]>([]); // Track active markers 
-
+    console.log(currentTime)
     // Function to check if current time is within a slot's time range
     const isAvailable = (startTime: string, endTime: string): boolean => {
         const currentTimeInMinutes = getCurrentTimeInMinutes();
@@ -234,9 +235,13 @@ export default function HomePage() {
                     })
 
                     // Add the marker to the map
-                    new mapboxgl.Marker(markerElement)
-                        .setLngLat([lng, lat])
-                        .addTo(mapRef.current);
+                    if (mapRef.current) {
+                        new mapboxgl.Marker(markerElement)
+                            .setLngLat([lng, lat])
+                            .addTo(mapRef.current); // Safe usage
+                    } else {
+                        console.error("Map reference is not initialized.");
+                    }
                 } else {
                     console.error(`Invalid coordinates for building: ${building.building}`, building.coords);
 
@@ -247,7 +252,9 @@ export default function HomePage() {
         });
 
         return () => {
-            mapRef.current.remove();
+            if (mapRef.current) {
+                mapRef.current.remove(); // Only call if mapRef.current is not null
+            }
         };
     }, [studySpots, userLocation]);
 
@@ -258,7 +265,7 @@ export default function HomePage() {
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             const data = await response.json();
             
-            const transformedData = data.map((building) => {
+            const transformedData = data.map((building: Building) => {
                 let buildingStatus = "Unavailable"; // Default status
                 let hasAvailable = false;
                 let hasOpeningSoon = false;
