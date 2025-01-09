@@ -34,16 +34,16 @@ interface Building {
 }
 
 export default function HomePage() {
-    const [connectionStatus, setConnectionStatus] = useState<string | null>("Connected");
+    //const [connectionStatus, setConnectionStatus] = useState<string | null>("Connected");
     const [studySpots, setStudySpots] = useState<Building[]>([]);
-    const [currentTime, setCurrentTime] = useState<string>("");
+    //const [currentTime, setCurrentTime] = useState<string>("");
     const [openBuildingIndex, setOpenBuildingIndex] = useState<number | null>(null);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [userLocation, setUserLocation] = useState<{ latitude: number | null, longitude: number | null }>({ latitude: null, longitude: null });
     const mapContainerRef = useRef<HTMLDivElement | null>(null); // Reference for the map container
     const mapRef = useRef<mapboxgl.Map | null>(null); // Store map instacne
-    const markersRef = useRef<mapboxgl.Marker[]>([]); // Track active markers 
+    //const markersRef = useRef<mapboxgl.Marker[]>([]); // Track active markers 
 
     // Function to check if current time is within a slot's time range
     const isAvailable = (startTime: string, endTime: string): boolean => {
