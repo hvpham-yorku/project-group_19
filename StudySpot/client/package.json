@@ -10,9 +10,8 @@
   },
   "dependencies": {
     "client": "file:",
-    "next": "^15.0.2",
-    "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028"
+    "mapbox-gl": "^3.8.0",
+    "next": "^15.1.4"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -23,10 +22,5 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  },
-  "dependencies": {
-    "mapbox-gl": "^3.8.0"
   }
-
-  
 }
