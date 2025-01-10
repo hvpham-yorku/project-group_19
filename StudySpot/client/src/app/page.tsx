@@ -261,7 +261,7 @@ export default function HomePage() {
     const handleFetchStudySpots = async () => {
         try {
             setIsLoading(true); // Set loading to true when fetch starts
-            const response = await fetch(`http://localhost:5001/api/study-spots`);
+            const response = await fetch(`https://studyspotsbackend.vercel.app/api/study-spots`);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             const data = await response.json();
             
