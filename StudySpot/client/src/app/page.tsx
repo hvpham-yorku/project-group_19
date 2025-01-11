@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './styles/HomePage.module.css';
 import Header from './components/Header';
 import LoadingIndicator from './components/LoadingIndicator';
-import FetchButton from './components/FetchButton';
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -349,15 +348,15 @@ export default function HomePage() {
         });
         console.log("Sort success.")
     }
+    
+    // Automatically fetch data on component mount
+    useEffect(() => {
+        handleFetchStudySpots();
+    }, []);
     return (
         <div className={styles.container}>
             {/* Header component */}
             <Header />
-
-            {/* Button component */}
-            {!dataLoaded && !isLoading && (
-                <FetchButton onClick={handleFetchStudySpots} />
-            )}
 
             {/* Loading component */}
             {isLoading && <LoadingIndicator />}
