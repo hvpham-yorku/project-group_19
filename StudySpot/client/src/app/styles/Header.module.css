@@ -4,7 +4,7 @@
     align-items: center; /* Vertically align logo and title */
     justify-content: center; /* Default: Center header horizontally */
     margin-top: 20px; /* Add space at the top */
-    margin-left: 25px;
+    
     width: 100%; /* Full width */
 }
 
@@ -20,5 +20,6 @@
     .header {
         justify-content: flex-start; /* Align header to the left */
         padding-left: 20px; /* Optional: Add some left padding for spacing */
+        margin-left: 25px;
     }
 }
