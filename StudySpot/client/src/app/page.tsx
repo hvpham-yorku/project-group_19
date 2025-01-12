@@ -39,7 +39,7 @@ export default function HomePage() {
     const [currentTime, setCurrentTime] = useState<string>("");
     const [openBuildingIndex, setOpenBuildingIndex] = useState<number | null>(null);
     const [dataLoaded, setDataLoaded] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [userLocation, setUserLocation] = useState<{ latitude: number | null, longitude: number | null }>({ latitude: null, longitude: null });
     const mapContainerRef = useRef<HTMLDivElement | null>(null); // Reference for the map container
     const mapRef = useRef<mapboxgl.Map | null>(null); // Store map instacne
@@ -364,7 +364,7 @@ export default function HomePage() {
             {/* Main study spot logic */}
             {/* The outer div container that holds all sections including lecture halls, libraries, and cafes. */}
             <div className={`${styles.studySpotsContainer} ${styles.centeredContainer}`}>
-                <div className={styles.left}>
+                <div className={`${styles.left} ${isLoading ? styles.hiddenContainer : ''}`}>
 
                     {/* Lecture Halls Section */}
                     {/* Checks if there are any lecture halls/classrooms available in the groupedStudySpots data */}
@@ -597,7 +597,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Right section: Map */}
-                <div className={styles.right}>
+                <div className={`${styles.right} ${isLoading ? styles.hiddenContainer : ''}`}>
                     <div ref={mapContainerRef} className={styles.map}></div>
                 </div>
             </div>

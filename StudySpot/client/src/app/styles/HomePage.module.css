@@ -1,8 +1,11 @@
 /* src/styles/HomePage.module.css */
 
+
 .container {
     text-align: center;
-    background-color: #000;
+    background-color: #f4f4f5;
+    color: #333333; /* Dark text for contrast */
+    font-family: 'Inter', sans-serif; /* ChatGPT-like font */
     /* margin-top: 50px;
     margin-bottom: 50px; */
 }
@@ -94,6 +97,7 @@
     margin-right: 8px;
 }
 
+
 .dotOpeningSoon {
     height: 10px;
     width: 10px;
@@ -110,6 +114,14 @@
     border-radius: 50%;
     display: inline-block;
     margin-right: 8px;
+}
+.dotAvailable, .dotUnavailable, .dotOpeningSoon {
+    flex-shrink: 0; /* Prevent dots from shrinking */
+    height: 12px; /* Ensure consistent size for the dots */
+    width: 12px; /* Ensure consistent size for the dots */
+    border-radius: 50%; /* Keep the dots circular */
+    display: inline-block; /* Make sure the dots remain inline */
+    margin-right: 8px; /* Space between the dot and the text */
 }
 
 .roomList {
@@ -149,6 +161,7 @@
 .slotTime {
     font-size: 14px;
     margin-bottom: 5px;
+    color: #333333; /* Dark text for contrast */
 }
 
 .dashedLine {
@@ -188,17 +201,17 @@
     margin-bottom: 1rem;
     border-bottom: 2px solid #ccc;
     padding-bottom: 0.5rem;
-    color: #fcfbfb;
+    color: #333333; /* Dark text for contrast */
     text-align: left;
 }
 
 .libraryRow, .cafeRow {
     display: flex;
-    justify-content: space-between;
-    padding: 1rem 1rem;
-    border-bottom: 1px solid #ccc;
+    align-items: center; /* Vertically align all elements */
+    justify-content: space-between; /* Distribute space between elements */
+    padding: 8px 10px; /* Add padding for spacing */
+    border-bottom: 1px solid #ccc; /* Optional: Divider line */
     cursor: pointer;
-    transition: background-colo 0.3s ease;
 }
 
 .cafeRow:hover, .libraryRow:hover{
@@ -212,7 +225,7 @@
 
 .libraryTime, .cafeTime {
     font-size: 0.9rem;
-    color: #fcfcfc;
+    color: #333333; /* Dark text for contrast */
 }
 
 @media (min-width: 768px) {
@@ -277,21 +290,54 @@
 .left {
     flex: 1; /* The left section takes up 1/3 of the width */
     overflow-y: auto; /* Enable scrolling if the content overflows */
-    padding: 20px;
-    background-color: #000; /* Optional: Background color for contrast */
-     /* Optional: Divider */
+    padding: 20px; /* Padding for spacing */
+    background-color: #f4f4f5; /* Light background color for contrast */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for container effect */
+    border: 1px solid #e5e7eb; /* Optional: Add a border for structure */
+    margin-right: 10px;
 }
 
 .right {
     flex: 2; /* The right section takes up 2/3 of the width */
     position: relative;
-    background-color: #000; /* Optional: Background color for map contrast */
-    border-radius: 20px;
+    background-color: #f4f4f5; /* Optional: Background color for map contrast */
+    border-radius: 10px;
     overflow: hidden;
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for container effect */
+    border: 1px solid #e5e7eb; /* Optional: Add a border for structure */
 }
 
 .map {
     width: 100%;
     height: 100%;
 }
+.hiddenContainer {
+    box-shadow: none; /* Remove the shadow */
+    border: none; /* Remove the border */
+    background-color: transparent; /* Make the container background transparent */
+}
+
+@media (max-width: 768px) {
+    .studySpotsContainer {
+        flex-direction: column; /* Stack children vertically */
+    }
+
+    .left, .right {
+        width: 100%; /* Take full width of the container */
+        padding: 5px; /* Optional: Adjust padding for smaller screens */
+        border-radius: 5; /* Optional: Remove border-radius for stacked layout */
+    }
+    .right {
+        margin-top: 10px; /* Add spacing between stacked sections */
+        width: 100%; /* Take full width of the container */
+    }
+    .map {
+        width: 100%; /* Ensure the map spans the full width */
+        height: 100%; /* Ensure the map takes up the container's height */
+    }
+    .sectionTitle{
+        margin-left: 10px;
+    }
+}
+
